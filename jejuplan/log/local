@@ -1,0 +1,42 @@
+2019-05-17 11:21:01.073  INFO 15976 --- [restartedMain] com.jejuplan.DemoApplication             : Starting DemoApplication on kychoi83-PC with PID 15976 (E:\testSourceCode\current\springboot_sample\jejuplan\target\classes started by User in E:\testSourceCode\current\springboot_sample\jejuplan)
+2019-05-17 11:21:01.073  INFO 15976 --- [restartedMain] com.jejuplan.DemoApplication             : No active profile set, falling back to default profiles: default
+2019-05-17 11:21:01.435  INFO 15976 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-05-17 11:21:01.436  INFO 15976 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-05-17 11:21:01.437  INFO 15976 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-17 11:21:01.517  INFO 15976 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-05-17 11:21:01.519  INFO 15976 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-05-17 11:21:01.521  INFO 15976 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 446 ms
+2019-05-17 11:21:01.716  INFO 15976 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-17 11:21:01.826  INFO 15976 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-05-17 11:21:01.882  INFO 15976 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-05-17 11:21:01.882  INFO 15976 --- [restartedMain] com.jejuplan.DemoApplication             : Started DemoApplication in 2.334 seconds (JVM running for 119.678)
+2019-05-17 11:21:01.885  INFO 15976 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-05-17 11:21:27.393  INFO 15976 --- [Thread-31] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-05-17 11:21:27.868  INFO 15976 --- [restartedMain] com.jejuplan.DemoApplication             : Starting DemoApplication on kychoi83-PC with PID 15976 (E:\testSourceCode\current\springboot_sample\jejuplan\target\classes started by User in E:\testSourceCode\current\springboot_sample\jejuplan)
+2019-05-17 11:21:27.869  INFO 15976 --- [restartedMain] com.jejuplan.DemoApplication             : No active profile set, falling back to default profiles: default
+2019-05-17 11:21:28.179  INFO 15976 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-05-17 11:21:28.180  INFO 15976 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-05-17 11:21:28.180  INFO 15976 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-17 11:21:28.239  INFO 15976 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-05-17 11:21:28.240  INFO 15976 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-05-17 11:21:28.240  INFO 15976 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 370 ms
+2019-05-17 11:21:28.333  INFO 15976 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-17 11:21:28.393  INFO 15976 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-05-17 11:21:28.430  INFO 15976 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-05-17 11:21:28.431  INFO 15976 --- [restartedMain] com.jejuplan.DemoApplication             : Started DemoApplication in 0.615 seconds (JVM running for 146.23)
+2019-05-17 11:21:28.433  INFO 15976 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-05-17 11:22:21.060  INFO 15976 --- [Thread-39] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-05-17 11:22:22.067  INFO 15976 --- [restartedMain] com.jejuplan.DemoApplication             : Starting DemoApplication on kychoi83-PC with PID 15976 (E:\testSourceCode\current\springboot_sample\jejuplan\target\classes started by User in E:\testSourceCode\current\springboot_sample\jejuplan)
+2019-05-17 11:22:22.067 DEBUG 15976 --- [restartedMain] com.jejuplan.DemoApplication             : Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-05-17 11:22:22.069  INFO 15976 --- [restartedMain] com.jejuplan.DemoApplication             : No active profile set, falling back to default profiles: default
+2019-05-17 11:22:22.503  INFO 15976 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-05-17 11:22:22.504  INFO 15976 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-05-17 11:22:22.504  INFO 15976 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-17 11:22:22.551  INFO 15976 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-05-17 11:22:22.551  INFO 15976 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-05-17 11:22:22.551  INFO 15976 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 474 ms
+2019-05-17 11:22:22.679  INFO 15976 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-17 11:22:22.769  INFO 15976 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-05-17 11:22:22.821  INFO 15976 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-05-17 11:22:22.823  INFO 15976 --- [restartedMain] com.jejuplan.DemoApplication             : Started DemoApplication in 0.87 seconds (JVM running for 200.628)
+2019-05-17 11:22:22.826  INFO 15976 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
