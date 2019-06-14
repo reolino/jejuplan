@@ -8,22 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>register</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="/webjars/bootstrap/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="/webjars/bootstrap/assets/vendors/iconfonts/ionicons/css/ionicons.css">
-    <link rel="stylesheet" href="/webjars/bootstrap/assets/vendors/iconfonts/typicons/src/font/typicons.css">
-    <link rel="stylesheet" href="/webjars/bootstrap/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="/webjars/bootstrap/assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="/webjars/bootstrap/assets/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/iconfonts/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/iconfonts/typicons/src/font/typicons.css">
+    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/css/vendor.bundle.addons.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="/webjars/bootstrap/assets/css/shared/style.css">
+    <link rel="stylesheet" href="/lib/bootstrap/assets/css/shared/style.css">
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="/webjars/bootstrap/assets/css/demo_1/style.css">
+    <link rel="stylesheet" href="/lib/bootstrap/assets/css/demo_1/style.css">
     <!-- End Layout styles -->
-    <link rel="shortcut icon" href="/webjars/bootstrap/assets/images/favicon.png" />
+    <link rel="shortcut icon" href="/lib/bootstrap/assets/images/favicon.png" />
 </head>
 <body>
 	<div class="container-scroller">
@@ -33,7 +33,7 @@
             <div class="col-lg-4 mx-auto">
               <h2 class="text-center mb-4">Register</h2>
               <div class="auto-form-wrapper">
-                <form id="ifrm" action="user/register">
+                <form id="ifrm" action="/member/user_register">
                   <div class="form-group">
                     <div class="input-group">
                       <input type="text" class="form-control" placeholder="Username">
@@ -88,12 +88,12 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="/webjars/bootstrap/assets/vendors/js/vendor.bundle.base.js"></script>
-    <script src="/webjars/bootstrap/assets/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="/lib/bootstrap/assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="/lib/bootstrap/assets/vendors/js/vendor.bundle.addons.js"></script>
     <!-- endinject -->
     <!-- inject:js -->
-    <script src="/webjars/bootstrap/assets/js/shared/off-canvas.js"></script>
-    <script src="/webjars/bootstrap/assets/js/shared/misc.js"></script>
+    <script src="/lib/bootstrap/assets/js/shared/off-canvas.js"></script>
+    <script src="/lib/bootstrap/assets/js/shared/misc.js"></script>
     <!-- endinject -->	
 </body>
 </html>

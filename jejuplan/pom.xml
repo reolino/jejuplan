@@ -106,6 +106,13 @@
 		    <version>1.16</version>
 		</dependency>
 		
+		<!-- JSTL -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+          </dependency>
+		
 	</dependencies>
 
 	<build>
