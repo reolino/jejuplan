@@ -25,6 +25,7 @@ import com.jejuplan.board.domain.FileVO;
 import com.jejuplan.board.service.BoardService;
 
 @Controller
+@RequestMapping("/board")
 public class BoardController {
 	@Resource(name="com.jejuplan.board.service.BoardService")
     BoardService boardService;
@@ -32,18 +33,18 @@ public class BoardController {
 	@Value("${file.upload.directory}")
 	String uploadFileDir;
 	
-    @RequestMapping("/board/list_view")
+    @RequestMapping("/list_view")
     private String boardListView(Model model) throws Exception{
         model.addAttribute("list", boardService.boardListService());
         return "board/list_view"; 
     }
     
-    @RequestMapping("/board/insert_view")
+    @RequestMapping("insert_view")
     private String boardInsertView(){
         return "board/insert_view";
     }
     
-    @RequestMapping("/board/insert")
+    @RequestMapping("/insert")
     private String  boardInsert(HttpServletRequest request, @RequestPart MultipartFile files) throws Exception{
     	BoardVO board = new BoardVO();
     	FileVO  file  = new FileVO();
@@ -82,20 +83,20 @@ public class BoardController {
         return  "redirect:/board/list_view";
     }
     
-    @RequestMapping("/board/detail/{bno}") 
+    @RequestMapping("/detail/{bno}") 
     private String boardDetailView(@PathVariable int bno, Model model) throws Exception{
     	model.addAttribute("detail", boardService.boardDetailService(bno));
         model.addAttribute("files", boardService.fileDetailService(bno)); 
         return "board/detail_view";
     }
     
-    @RequestMapping("/board/update/{bno}")
+    @RequestMapping("/update/{bno}")
     private String boardUpdateForm(@PathVariable int bno, Model model) throws Exception{
         model.addAttribute("detail", boardService.boardDetailService(bno));
         return "board/update_view";
     }
     
-    @RequestMapping("/board/update")
+    @RequestMapping("/update")
     private String boardUpdate(HttpServletRequest request) throws Exception{
     	 BoardVO board = new BoardVO();
          board.setSubject(request.getParameter("subject"));
@@ -106,13 +107,13 @@ public class BoardController {
          return "redirect:/board/detail/"+request.getParameter("bno"); 
     }
  
-    @RequestMapping("/board/delete/{bno}")
+    @RequestMapping("/delete/{bno}")
     private String boardDelete(@PathVariable int bno) throws Exception{
     	boardService.boardDeleteService(bno);
         return "redirect:/board/list_view";
     }
     
-    @RequestMapping("/board/fileDown/{bno}")
+    @RequestMapping("/fileDown/{bno}")
     private void fileDown(@PathVariable int bno, HttpServletRequest request, HttpServletResponse response) throws Exception{
         
     	request.setCharacterEncoding("UTF-8");
