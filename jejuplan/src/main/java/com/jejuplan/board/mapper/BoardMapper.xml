@@ -21,28 +21,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE BNO = #{bno}
     </select>
     
-    <insert id="boardInsert" parameterType="com.jejuplan.board.domain.BoardVO">
-        INSERT INTO
-        BOARD (SUBJECT,CONTENT,WRITER,REG_DATE)
-        VALUES(#{subject},#{content},#{writer},now()) 
+    <insert id="boardInsert" useGeneratedKeys="true" keyProperty="bno" parameterType="com.jejuplan.board.domain.BoardVO">
+        INSERT INTO BOARD
+        (BNO,SUBJECT,CONTENT,WRITER,REG_DATE)
+        VALUES
+        (#{bno}, #{subject},#{content},#{writer},now()) 
     </insert>
     
     <update id="boardUpdate" parameterType="com.jejuplan.board.domain.BoardVO">
         UPDATE BOARD
         SET
         <if test="subject != null">
-        	SUBJECT = #{subject}
+       	SUBJECT = #{subject}
         </if>
         <if test="subject != null and content != null"> , </if>
         <if test="content != null">
-            CONTENT = #{content}
+        CONTENT = #{content}
         </if>
         WHERE BNO = #{bno}
     </update>
     
     <delete id="boardDelete" parameterType="int">
-        DELETE FROM BOARD WHERE BNO = #{bno}
+        DELETE FROM BOARD 
+        WHERE BNO = #{bno}
     </delete>
+    
+    <insert id="fileInsert" parameterType="com.jejuplan.board.domain.FileVO">
+       	INSERT INTO FILES 
+       	(FNO, BNO, FILENAME, FILEORINAME, FILEURL)
+       	VALUES
+       	(#{fno},#{bno},#{fileName},#{fileOriName},#{fileUrl})
+	</insert>
+	
+	<select id="fileDetail" parameterType="int" resultType="com.jejuplan.board.domain.FileVO">
+    	SELECT *
+    	FROM Files
+    	WHERE BNO = #{bno}
+	</select>
+
 </mapper>
 
 

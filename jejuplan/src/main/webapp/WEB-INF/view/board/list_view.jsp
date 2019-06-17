@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="layoutTag" tagdir="/WEB-INF/tags"%>     
+<layoutTag:layout>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,12 +28,13 @@
             <td>${l.bno}</td>
             <td>${l.subject}</td>
             <td>${l.writer}</td>
-            <td>${l.reg_date}</td>
+            <td>
+            	<fmt:formatDate value="${l.reg_date}" pattern="yyyy.MM.dd HH:mm:ss"/>
+            </td>
         </tr>
     	</c:forEach>
 	</table>
 </div>
- 
-<%@ include file="../common/bootstrap.jsp" %>
 </body>
 </html>
+</layoutTag:layout>  

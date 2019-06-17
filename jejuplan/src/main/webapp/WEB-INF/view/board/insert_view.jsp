@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="layoutTag" tagdir="/WEB-INF/tags"%>     
+<layoutTag:layout>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,7 @@
  
 <h2>Insert View</h2>
 <div class="container">
-    <form action="/board/insert" method="post">
+    <form action="/board/insert" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label for="subject">subject</label>
         <input type="text" class="form-control" id="subject" name="subject" placeholder="input subjsect.">
@@ -23,8 +25,11 @@
         <label for=content">content</label>
         <textarea class="form-control" id="content" name="content" rows="3"></textarea>
       </div>
+      
+      <input type="file" name="files"> 
+      
       <button type="submit" class="btn btn-primary">submit</button>
     </form>
 </div>
-<%@ include file="../common/bootstrap.jsp" %>
 </body>
+</layoutTag:layout>  
