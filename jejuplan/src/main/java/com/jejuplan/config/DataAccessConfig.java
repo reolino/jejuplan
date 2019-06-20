@@ -21,7 +21,7 @@ public class DataAccessConfig {
 
         sessionFactory.setDataSource(dataSource);
         sessionFactory.setMapperLocations(
-        		new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
+        		new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*/*.xml"));
         return sessionFactory.getObject();
     }
 

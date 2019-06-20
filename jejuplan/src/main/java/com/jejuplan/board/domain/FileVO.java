@@ -10,5 +10,5 @@ public class FileVO {
     private int bno;
     private String fileName;     
     private String fileOriName; 
-    private String fileUrl;
+    private String fileUrl;    
 }

@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class BoardVO {
 	private int bno;
+    private String menuid;
     private String subject;
     private String content;
     private String writer;

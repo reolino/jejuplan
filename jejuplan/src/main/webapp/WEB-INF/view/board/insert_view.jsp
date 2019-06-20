@@ -13,6 +13,7 @@
 <h2>Insert View</h2>
 <div class="container">
     <form action="/board/insert" method="post" enctype="multipart/form-data">
+   	  <input type="hidden" id="menuid" name="menuid" value="M0001">
       <div class="form-group">
         <label for="subject">subject</label>
         <input type="text" class="form-control" id="subject" name="subject" placeholder="input subjsect.">

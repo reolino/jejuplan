@@ -23,9 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <insert id="boardInsert" useGeneratedKeys="true" keyProperty="bno" parameterType="com.jejuplan.board.domain.BoardVO">
         INSERT INTO BOARD
-        (BNO,SUBJECT,CONTENT,WRITER,REG_DATE)
+        (BNO,MENUID,SUBJECT,CONTENT,WRITER,REG_DATE)
         VALUES
-        (#{bno}, #{subject},#{content},#{writer},now()) 
+        (#{bno},#{menuid} ,#{subject},#{content},#{writer},now()) 
     </insert>
     
     <update id="boardUpdate" parameterType="com.jejuplan.board.domain.BoardVO">
