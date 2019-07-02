@@ -14,10 +14,10 @@
         </a>
         <ul class="sidenav-second-level collapse" id="jspPages">
           <li>
-            <a href="/board/list_view">Mybatis</a>
+            <a href="/board/list_view">CRUD</a>
           </li>
           <li>
-            <a href="/board/list_view">JPA</a>
+            <a href="/board/list_view">Rest API</a>
           </li>
         </ul>
       </li>
