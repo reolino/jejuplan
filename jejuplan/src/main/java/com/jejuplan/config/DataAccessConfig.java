@@ -27,6 +27,6 @@ public class DataAccessConfig {
 
     @Bean
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
-        return new SqlSessionTemplate(sqlSessionFactory);
+    	return new SqlSessionTemplate(sqlSessionFactory);
     }
 }

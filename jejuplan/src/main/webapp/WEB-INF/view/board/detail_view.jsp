@@ -9,19 +9,26 @@ pageEncoding="UTF-8"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Detail View</title>
-<script src="/lib/jquery/jquery-3.4.1.min.js"></script>
 
 <script>
 var bno = '${detail.bno}'; //게시글 번호
 
-/* $('[name=commentInsertBtn]').click(function(){ 
-    var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-    commentInsert(insertData); //Insert 함수호출(아래)
-}); */
+$( document ).ready(function() {
+	$('#attachDownBtn').click(function(){ 
+		window.location.href = "/board/fileDown/"+${files.bno};
+	});
+	
+	$('[name=commentInsertBtn]').click(function(){ 
+    	var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
+    	commentInsert(insertData); //Insert 함수호출(아래)
+	});
+	
+   commentList(); //페이지 로딩시 댓글 목록 출력 
+});
 
 function commentInsertEvent(){
-	  var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-	    commentInsert(insertData); //Insert 함수호출(아래)
+	var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
+	commentInsert(insertData); //Insert 함수호출(아래)
 }
  
 //댓글 목록 
@@ -99,66 +106,69 @@ function commentDelete(cno){
     });
 }
  
-$(document).ready(function(){
-    commentList(); //페이지 로딩시 댓글 목록 출력 
-});
  
 </script>
-
 </head>
-<body>
-<h2>Detail View</h2>
- 
-<div class="container">
-    <form action="#" method="post">
-      <div class="form-group">
-        <label>subject</label>
-        <p>${detail.subject}</p>
-      </div>
-      <div class="form-group">
-        <label>writer</label>
-        <p>${detail.writer}</p>
-      </div>
-      <div class="form-group">
-        <label>reg_date</label>
-        <p>
-        	<fmt:formatDate value="${detail.reg_date}" pattern="yyyy.MM.dd HH:mm:ss"/>
-        </p>
-      </div>
-      <div class="form-group"> <!-- 첨부파일 다운로드 -->
-        <label>attach_file</label>
-        <p><a href="/board/fileDown/${files.bno}">${files.fileOriName}</a></p>
-      </div>    
-      
-      <div class="form-group">
-        <label>content</label>
-        <p>${detail.content}</p>
-      </div>
-      <div class="btn-group btn-group-sm" role="group" style="float:right;">
-      	<button type="button" class="btn btn-default" onclick="location.href='/board/delete/${detail.bno}'">delete</button>
-      	<button type="button" class="btn btn-default" onclick="location.href='/board/update/${detail.bno}'">update</button>
-      	<button type="button" class="btn btn-default" onclick="location.href='/board/list'">list</button>
-      </div>
-    </form>
-    
-    <div class="container">
-        <label for="content">comment</label>
-        <form name="commentInsertForm">
-            <div class="input-group">
-               <input type="hidden" name="bno" value="${detail.bno}"/>
-               <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
-               <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" name="commentInsertBtn" onclick="commentInsertEvent()">등록</button>
-               </span>
-              </div>
-        </form>
-    </div>
-    
-    <div class="container">
-        <div class="commentList"></div>
-    </div>
-
-</div>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<div class="grid-margin stretch-card">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Detail View</h4>
+           			<form class="forms-sample" action="/board/insert" method="post" enctype="multipart/form-data">
+           				<div class="form-group">
+                    		<label for="subject">Subject</label>
+                    		<input type="text" class="form-control" id="subject" name="subject" value="${detail.subject}" placeholder="input subjsect." disabled>
+		      			</div>
+		      			<div class="form-group">
+                    		<label for="writer">Writer</label>
+    							<input type="text" class="form-control" id="writer" name="writer" value="${detail.writer}" placeholder="input writer." disabled>
+	                  </div>
+                   	<div class="form-group">
+				        		<label for=content">Content</label>
+				        		<textarea class="form-control" id="content" name="content" rows="3" disabled="disabled">${detail.content}</textarea>
+				    		</div>
+						   <div class="form-group">
+								<label for=attach_file">Attach File</label>
+					        	<div class="input-group col-xs-12">
+	                       	<input type="text" id="attach_file" name="attach_file" value="${files.fileOriName}" class="form-control file-upload-info" disabled placeholder="Upload Image">
+	                        	<span class="input-group-append">
+	                          		<button id="attachDownBtn" class="file-upload-browse btn btn-info" type="button">DownLoad</button>
+	                        	</span>
+	                   	</div>
+						  	</div>
+						   <div class="form-group">
+						   	<label for=reg_date">Reg_date</label>
+		      				<input type="text" class="form-control" id="reg_date" name="reg_date" value="${detail.reg_date}" placeholder="input writer." disabled="disabled">
+						   </div>
+           			</form>
+             			
+            		<button type="button" class="btn btn-danger" onclick="location.href='/board/delete/${detail.bno}'">delete</button>
+	      			<button type="button" class="btn btn-normal" onclick="location.href='/board/update/${detail.bno}'">update</button>
+	      			<button type="button" class="btn btn-info" onclick="location.href='/board/list_view'">list</button>
+             			
+            		<div style="padding:10px">
+		        			<label for="content">comment</label>
+				        	<form name="commentInsertForm">
+				         	<div class="input-group">
+				               <input type="hidden" name="bno" value="${detail.bno}"/>
+				               <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
+				               <span class="input-group-btn">
+				                    <button class="btn btn-default" type="button" name="commentInsertBtn">Write</button>
+				               </span>
+				            </div>
+				        </form>
+		    			</div>
+			    
+						<div style="padding:10px">
+							<div class="commentList"></div>
+						</div>
+            	</div>
+         	</div>
+      	</div>
+   	</div>
+	</div>
 </body>
 </html>
 </layoutTag:layout>  

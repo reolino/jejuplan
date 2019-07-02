@@ -2,6 +2,9 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags"%>
 <tag:header/> 
 <tag:navbar/>
+<tag:common/>
+<tag:footer/>
 <jsp:doBody/>
+
 
 

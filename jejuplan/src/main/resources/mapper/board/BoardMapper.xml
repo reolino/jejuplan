@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="boardCount" resultType="int">
         SELECT COUNT(*)
         FROM BOARD
+        ORDER BY REG_DATE DESC
     </select>
     
     <select id="boardList" resultType="com.jejuplan.board.domain.BoardVO">

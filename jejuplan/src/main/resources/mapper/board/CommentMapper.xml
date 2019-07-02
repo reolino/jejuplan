@@ -10,9 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM COMMENT
     </select>
     
-    <select id="commentList" resultType="com.jejuplan.board.domain.CommentVO">
+    <select id="commentList" parameterType="com.jejuplan.board.domain.CommentVO" resultType="com.jejuplan.board.domain.CommentVO">
         SELECT *
         FROM COMMENT
+        WHERE BNO = #{bno}
+        ORDER BY BNO DESC
     </select>
     
     <insert id="commentInsert" parameterType="com.jejuplan.board.domain.CommentVO">

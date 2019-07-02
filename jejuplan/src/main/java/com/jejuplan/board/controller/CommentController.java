@@ -3,6 +3,8 @@ package com.jejuplan.board.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +23,10 @@ public class CommentController {
 	
 	@RequestMapping("/list") //댓글 리스트
     @ResponseBody
-    private List<CommentVO> mCommentServiceList(Model model) throws Exception{
-        
-        return commentService.commentListService();
+    private List<CommentVO> mCommentServiceList(@RequestParam int bno, Model model) throws Exception{
+		CommentVO comment = new CommentVO();
+		comment.setBno(bno);
+	    return commentService.commentListService(comment);
     }
     
     @RequestMapping("/insert") //댓글 작성 
