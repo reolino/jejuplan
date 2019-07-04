@@ -17,7 +17,7 @@
             <a href="/board/list_view">CRUD</a>
           </li>
           <li>
-            <a href="/board/list_view">Rest API</a>
+            <a href="/board/rest_view">Rest API</a>
           </li>
         </ul>
       </li>

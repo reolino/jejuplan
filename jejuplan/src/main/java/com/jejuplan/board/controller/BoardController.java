@@ -100,8 +100,8 @@ public class BoardController {
         FileUtil.fileDownload(fileVO, request, response);
     }
     
-    @RequestMapping("/test") 
+    @RequestMapping("/rest_view") 
     private String test() throws Exception{
-        return "test";
+        return "board/rest_view";
     }
 }
