@@ -6,7 +6,7 @@
 <meta charset="utf-8">
   <title>index</title>
   <script>
-  		location.href= "/board/list_view";
+  		location.href= "/login/view";
   </script>
 </head>
 </html>

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(value="com.jejuplan.board.mapper")
+@MapperScan(value="com.jejuplan.*.mapper")
 public class DataAccessConfig {
 
 	@Bean

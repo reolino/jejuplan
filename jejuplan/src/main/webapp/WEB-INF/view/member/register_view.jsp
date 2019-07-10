@@ -1,29 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags"%>     
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>register</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/iconfonts/ionicons/css/ionicons.css">
-    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/iconfonts/typicons/src/font/typicons.css">
-    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="/lib/bootstrap/assets/vendors/css/vendor.bundle.addons.css">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="/lib/bootstrap/assets/css/shared/style.css">
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="/lib/bootstrap/assets/css/demo_1/style.css">
-    <!-- End Layout styles -->
-    <link rel="shortcut icon" href="/lib/bootstrap/assets/images/favicon.png" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>register</title>
+<tag:customCss/>
+<tag:header/>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("#regBtn").click(function(){
+		var member_id = $("#member_id").val();
+		var member_pw = $("#member_pw").val();
+		var confirm_pw = $("#confirm_pw").val();
+		
+		if(member_id == ''){
+			alert('Input ID');
+			return;
+		}else if(member_pw == ''){
+			alert('Input Password');
+			return;
+		}else if(confirm_pw == ''){
+			alert('Input Confirm Password');
+			return;
+		}
+		else if(member_pw != confirm_pw){
+			alert('Password do not match');
+			return;
+		}
+		
+		var params = $("#ifrm").serialize();
+
+		 $.ajax({
+			type:"post",
+      	url : "/member/register/proc",
+      	data:params,
+         dataType : "json",
+         async:false,
+         success : function(data){
+				alert(data.message);
+				
+				if(data.result =='true'){
+					goLoginView();
+				} 
+         },
+         error :function(xhr, status, e){
+         	alert('ajax Failed')
+         }
+	  	}); 
+	}); 
+});
+
+function goLoginView(){
+	$("#ifrm").attr("action", "/login/view");
+	$("#ifrm").submit();
+}
+
+</script>
 </head>
 <body>
 	<div class="container-scroller">
@@ -33,10 +70,12 @@
             <div class="col-lg-4 mx-auto">
               <h2 class="text-center mb-4">Register</h2>
               <div class="auto-form-wrapper">
-                <form id="ifrm" action="/member/user_register">
+                <form id="ifrm" action="#">
+                  <input type="hidden" id="member_auth" name="member_auth" value="admin">
+                
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Username">
+                      <input type="text" id="member_id" name="member_id" class="form-control" placeholder="ID" >
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -46,7 +85,7 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="Password">
+                      <input type="password" id="member_pw" name="member_pw" class="form-control" placeholder="Password" autocomplete="member_pw">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -56,7 +95,7 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="Confirm Password">
+                      <input type="password" id="confirm_pw" class="form-control" placeholder="Confirm Password" autocomplete="confirm_pw">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -64,14 +103,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="form-group d-flex justify-content-center">
-                    <div class="form-check form-check-flat mt-0">
-                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" checked> I agree to the terms </label>
-                    </div>
-                  </div>
                   <div class="form-group">
-                    <button class="btn btn-primary submit-btn btn-block">Register</button>
+                    <button class="btn btn-primary submit-btn btn-block" id="regBtn">Register</button>
                   </div>
                   <div class="text-block text-center my-3">
                     <span class="text-small font-weight-semibold">Already have and account ?</span>
@@ -82,18 +115,7 @@
             </div>
           </div>
         </div>
-        <!-- content-wrapper ends -->
       </div>
-      <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="/lib/bootstrap/assets/vendors/js/vendor.bundle.base.js"></script>
-    <script src="/lib/bootstrap/assets/vendors/js/vendor.bundle.addons.js"></script>
-    <!-- endinject -->
-    <!-- inject:js -->
-    <script src="/lib/bootstrap/assets/js/shared/off-canvas.js"></script>
-    <script src="/lib/bootstrap/assets/js/shared/misc.js"></script>
-    <!-- endinject -->	
 </body>
 </html>

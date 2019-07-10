@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.jejuplan.member.mapper.LoginMapper">
+ 
+	<select id="memberCheck" resultType="int" parameterType="com.jejuplan.board.domain.BoardVO">
+        SELECT COUNT(*)
+         FROM MEMBER
+        WHERE MEMBER_ID = #{member_id}
+    </select>
+    
+    <insert id="memberInsert" parameterType="com.jejuplan.member.domain.MemberVO">
+        INSERT INTO MEMBER
+        (MEMBER_ID,MEMBER_PW,MEMBER_AUTH,REG_DATE)
+        VALUES
+        (#{member_id},#{member_pw},#{member_auth},now()) 
+    </insert>
+    
+    <select id="memberDetail" resultType="com.jejuplan.member.domain.MemberVO">
+        SELECT *
+        FROM MEMBER
+ 		  WHERE USER_ID = #{user_id}
+    </select>
+
+</mapper>
+
+

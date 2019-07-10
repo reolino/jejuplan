@@ -32,7 +32,7 @@ public class BoardController {
         return "board/list_view"; 
     }
     
-    @RequestMapping("insert_view")
+    @RequestMapping("/insert_view")
     private String boardInsertView(){
         return "board/insert_view";
     }
