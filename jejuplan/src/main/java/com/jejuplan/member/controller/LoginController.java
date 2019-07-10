@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jejuplan.config.JasyptConfig;
 import com.jejuplan.member.domain.MemberVO;
 import com.jejuplan.member.service.LoginService;
 
@@ -38,9 +39,9 @@ public class LoginController {
 	@RequestMapping(value="/member/register/proc", method=RequestMethod.POST)
 	public @ResponseBody Map<String, Object> registerProc(@ModelAttribute MemberVO memberVo) throws Exception { 
 		Map<String, Object> map = new HashMap<String, Object>();
-
+		
 		int checkCnt = LoginService.memberCheck(memberVo); 
-
+		
 		if(checkCnt> 0) {
     		map.put("result", "false");
         	map.put("message", "ID exists");
