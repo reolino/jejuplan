@@ -1,8 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
-<footer class="sticky-footer">
-	<div class="container">
-	  <div class="text-center">
-	    <small>Copyright © reolino 2019</small>
-	  </div>
-	</div>
+<footer class="footer">
+	<div class="container-fluid clearfix">
+  		<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019 <a href="http://www.bootstrapdash.com/" target="_blank">reolino</a>. All rights reserved.</span>
+   </div>
 </footer>

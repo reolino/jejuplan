@@ -19,9 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
     
     <select id="memberDetail" resultType="com.jejuplan.member.domain.MemberVO">
-        SELECT *
+        SELECT MEMBER_ID, MEMBER_PW, MEMBER_AUTH, REG_DATE, USE_YN
         FROM MEMBER
- 		  WHERE USER_ID = #{user_id}
+ 		  WHERE MEMBER_ID = #{member_id}
+ 		  AND USE_YN ='Y'
     </select>
 
 </mapper>

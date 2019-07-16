@@ -20,10 +20,10 @@ public class BoardRestController {
 	@Resource(name="com.jejuplan.board.service.BoardService")
     BoardService boardService;
 	
-	@RequestMapping(value = "/rest/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/rest/list/proc", method = RequestMethod.GET)
 	public ResponseEntity<List<BoardVO>> list() throws Exception {
 		List<BoardVO> boardlist = new ArrayList<BoardVO>();
-		boardlist = boardService.boardListService();
+		boardlist = boardService.boardList();
 	    
 	    return new ResponseEntity<List<BoardVO>>(boardlist, HttpStatus.OK) ;
 	}

@@ -1,6 +1,7 @@
 package com.jejuplan.board.domain;
 
 import java.sql.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 

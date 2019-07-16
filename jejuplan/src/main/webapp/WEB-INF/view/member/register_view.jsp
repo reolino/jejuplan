@@ -4,63 +4,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>register</title>
-<tag:customCss/>
-<tag:header/>
-<script type="text/javascript">
-
-$(document).ready(function(){
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>register</title>
+	<tag:header/>
+	<tag:boot_css/>
 	
-	$("#regBtn").click(function(){
-		var member_id = $("#member_id").val();
-		var member_pw = $("#member_pw").val();
-		var confirm_pw = $("#confirm_pw").val();
+	<script type="text/javascript">
+	$(document).ready(function(){
 		
-		if(member_id == ''){
-			alert('Input ID');
-			return;
-		}else if(member_pw == ''){
-			alert('Input Password');
-			return;
-		}else if(confirm_pw == ''){
-			alert('Input Confirm Password');
-			return;
-		}
-		else if(member_pw != confirm_pw){
-			alert('Password do not match');
-			return;
-		}
-		
-		var params = $("#ifrm").serialize();
-
-		 $.ajax({
-			type:"post",
-      	url : "/member/register/proc",
-      	data:params,
-         dataType : "json",
-         async:false,
-         success : function(data){
-				alert(data.message);
-				
-				if(data.result =='true'){
-					goLoginView();
-				} 
-         },
-         error :function(xhr, status, e){
-         	alert('ajax Failed')
-         }
-	  	}); 
-	}); 
-});
-
-function goLoginView(){
-	$("#ifrm").attr("action", "/login/view");
-	$("#ifrm").submit();
-}
-
-</script>
+		$("#regBtn").click(function(){
+			var member_id = $("#member_id").val();
+			var member_pw = $("#member_pw").val();
+			var confirm_pw = $("#confirm_pw").val();
+			
+			if(member_id == ''){
+				alert('Input ID');
+				return;
+			}else if(member_pw == ''){
+				alert('Input Password');
+				return;
+			}else if(confirm_pw == ''){
+				alert('Input Confirm Password');
+				return;
+			}
+			else if(member_pw != confirm_pw){
+				alert('Password do not match');
+				return;
+			}
+			
+			var params = $("#ifrm").serialize();
+	
+			 $.ajax({
+				type:"post",
+	      	url : "/member/register/proc",
+	      	data:params,
+	         dataType : "json",
+	         async:false,
+	         success : function(data){
+					alert(data.message);
+					
+					if(data.result =='true'){
+						goLoginView();
+					} 
+	         },
+	         error :function(xhr, status, e){
+	         	alert('ajax Failed')
+	         }
+		  	}); 
+		}); 
+	});
+	
+	function goLoginView(){
+		$("#ifrm").attr("action", "/login/view");
+		$("#ifrm").submit();
+	}
+	
+	</script>
 </head>
 <body>
 	<div class="container-scroller">
@@ -71,7 +71,7 @@ function goLoginView(){
               <h2 class="text-center mb-4">Register</h2>
               <div class="auto-form-wrapper">
                 <form id="ifrm" action="#">
-                  <input type="hidden" id="member_auth" name="member_auth" value="admin">
+                	<input type="hidden" id="member_auth" name="member_auth" value="admin">
                 
                   <div class="form-group">
                     <div class="input-group">
@@ -103,6 +103,12 @@ function goLoginView(){
                       </div>
                     </div>
                   </div>
+                  <div class="form-group d-flex justify-content-center">
+                    <div class="form-check form-check-flat mt-0">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" checked> I agree to the terms </label>
+                    </div>
+                  </div>
                   <div class="form-group">
                     <button class="btn btn-primary submit-btn btn-block" id="regBtn">Register</button>
                   </div>
@@ -113,9 +119,11 @@ function goLoginView(){
                 </form>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+         	</div>
+      	</div>
+   	</div>
+	</div>
+	<tag:boot_js/>
+	
 </body>
 </html>

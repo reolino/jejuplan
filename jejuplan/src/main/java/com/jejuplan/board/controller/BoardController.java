@@ -26,18 +26,18 @@ public class BoardController {
 	@Value("${file.upload.directory}")
 	String uploadFileDir;
 	
-    @RequestMapping("/list_view")
+    @RequestMapping("/list/view")
     private String boardListView(Model model) throws Exception{
-        model.addAttribute("list", boardService.boardListService());
+        model.addAttribute("list", boardService.boardList());
         return "board/list_view"; 
     }
     
-    @RequestMapping("/insert_view")
+    @RequestMapping("/insert/view")
     private String boardInsertView(){
         return "board/insert_view";
     }
     
-    @RequestMapping("/insert")
+    @RequestMapping("/insert/proc")
     private String  boardInsert(HttpServletRequest request, @RequestPart MultipartFile files) throws Exception{
     	BoardVO boardVO = new BoardVO();
     	FileVO  fileVO  = new FileVO();
@@ -48,59 +48,58 @@ public class BoardController {
     	boardVO.setMenuid(request.getParameter("menuid"));
     	
         if(files.isEmpty()){
-            boardService.boardInsertService(boardVO); 
+            boardService.boardInsert(boardVO); 
         }
         else{
-        	
-            boardService.boardInsertService(boardVO); 
+            boardService.boardInsert(boardVO); 
             String desUploadFileDir = uploadFileDir+request.getParameter("menuid")+"/";
 
             fileVO = FileUtil.fileUpload(files,fileVO, desUploadFileDir);
             fileVO.setBno(boardVO.getBno());
-            boardService.fileInsertService(fileVO); 
+            boardService.fileInsert(fileVO); 
         }
      
-        return  "redirect:/board/list_view";
+        return  "redirect:/board/list/view";
     }
     
-    @RequestMapping("/detail/{bno}") 
+    @RequestMapping("/detail/view/{bno}") 
     private String boardDetailView(@PathVariable int bno, Model model) throws Exception{
-    	model.addAttribute("detail", boardService.boardDetailService(bno));
-        model.addAttribute("files", boardService.fileDetailService(bno)); 
+    	model.addAttribute("detail", boardService.boardDetail(bno));
+        model.addAttribute("files", boardService.fileDetail(bno)); 
         return "board/detail_view";
     }
     
-    @RequestMapping("/update/{bno}")
+    @RequestMapping("/update/view/{bno}")
     private String boardUpdateForm(@PathVariable int bno, Model model) throws Exception{
-        model.addAttribute("detail", boardService.boardDetailService(bno));
+        model.addAttribute("detail", boardService.boardDetail(bno));
         return "board/update_view";
     }
     
-    @RequestMapping("/update")
+    @RequestMapping("/update/proc")
     private String boardUpdate(HttpServletRequest request) throws Exception{
     	 BoardVO boardVO = new BoardVO();
     	 boardVO.setSubject(request.getParameter("subject"));
     	 boardVO.setContent(request.getParameter("content"));
     	 boardVO.setBno(Integer.parseInt(request.getParameter("bno")));
          
-         boardService.boardUpdateService(boardVO);
-         return "redirect:/board/detail/"+request.getParameter("bno"); 
+         boardService.boardUpdate(boardVO);
+         return "redirect:/board/detail/view/"+request.getParameter("bno"); 
     }
  
-    @RequestMapping("/delete/{bno}")
+    @RequestMapping("/delete/proc/{bno}")
     private String boardDelete(@PathVariable int bno) throws Exception{
-    	boardService.boardDeleteService(bno);
-        return "redirect:/board/list_view";
+    	boardService.boardDelete(bno);
+        return "redirect:/board/list/view";
     }
     
-    @RequestMapping("/fileDown/{bno}")
+    @RequestMapping("/fileDown/proc/{bno}")
     private void fileDown(@PathVariable int bno, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	request.setCharacterEncoding("UTF-8");
-        FileVO fileVO = boardService.fileDetailService(bno);
+        FileVO fileVO = boardService.fileDetail(bno);
         FileUtil.fileDownload(fileVO, request, response);
     }
     
-    @RequestMapping("/rest_view") 
+    @RequestMapping("/rest/view") 
     private String test() throws Exception{
         return "board/rest_view";
     }

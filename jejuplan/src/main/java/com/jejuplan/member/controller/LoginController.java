@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jejuplan.Util.CryptUtil;
-import com.jejuplan.config.JasyptConfig;
 import com.jejuplan.member.domain.MemberVO;
 import com.jejuplan.member.service.LoginService;
 
 @Controller
+@SessionAttributes({"member_id", "member_auth"})
 public class LoginController {
 	@Resource(name="com.jejuplan.member.service.LoginService")
     LoginService LoginService;
@@ -27,10 +28,42 @@ public class LoginController {
         return "index"; 
     }
 	
+	@RequestMapping("/main")
+    private String main(Model model) throws Exception{
+        return "main_view"; 
+    }
+	
 	@RequestMapping("/login/view")
     private String login_view(Model model) throws Exception{
-        return "/login_view"; 
+        return "login_view"; 
     }
+	
+	@RequestMapping(value="/member/login/proc", method=RequestMethod.POST)
+	public @ResponseBody Map<String, Object> loginProc(@ModelAttribute MemberVO memberVo, Model model) throws Exception { 
+		Map<String, Object> map = new HashMap<String, Object>();
+		MemberVO resultVo  = LoginService.memberDetail(memberVo); 
+			
+		if(resultVo != null) {
+			String userPw =  CryptUtil.decrypt(resultVo.getMember_pw());
+			String paramPw = memberVo.getMember_pw();
+			
+			if(paramPw.equals(userPw)) {
+				model.addAttribute("member_id", resultVo.getMember_id());
+		        model.addAttribute("member_auth", resultVo.getMember_auth()); 
+		        model.addAttribute("className", this.getClass());
+
+	    		map.put("result", "true");
+			}else {
+				map.put("result", "false");
+	        	map.put("message", "Passwords do not match");
+			}
+		}else {
+	        map.put("result", "false");
+	        map.put("message", "User does not exist");
+		}
+		
+		return map; 
+	}
 	
 	@RequestMapping("/member/register/view")
     private String register_view(Model model) throws Exception{

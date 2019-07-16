@@ -12,31 +12,31 @@ public class BoardService {
 	@Resource(name="com.jejuplan.board.mapper.BoardMapper")
     BoardMapper boardMapper;
     
-    public List<BoardVO> boardListService() throws Exception{
+    public List<BoardVO> boardList() throws Exception{
         return boardMapper.boardList();
     }
     
-    public BoardVO boardDetailService(int bno) throws Exception{
+    public BoardVO boardDetail(int bno) throws Exception{
         return boardMapper.boardDetail(bno);
     }
     
-    public int boardInsertService(BoardVO board) throws Exception{
+    public int boardInsert(BoardVO board) throws Exception{
         return boardMapper.boardInsert(board);
     }
     
-    public int boardUpdateService(BoardVO board) throws Exception{
+    public int boardUpdate(BoardVO board) throws Exception{
         return boardMapper.boardUpdate(board);
     }
     
-    public int boardDeleteService(int bno) throws Exception{
+    public int boardDelete(int bno) throws Exception{
         return boardMapper.boardDelete(bno);
     }
     
-    public int fileInsertService(FileVO file) throws Exception{
+    public int fileInsert(FileVO file) throws Exception{
         return boardMapper.fileInsert(file);
     }
     
-    public FileVO fileDetailService(int bno) throws Exception{
+    public FileVO fileDetail(int bno) throws Exception{
         return boardMapper.fileDetail(bno);
     }
 }
