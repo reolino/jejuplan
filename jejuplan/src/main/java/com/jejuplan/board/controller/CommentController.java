@@ -3,7 +3,6 @@ package com.jejuplan.board.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,43 +20,42 @@ public class CommentController {
 	@Resource(name="com.jejuplan.board.service.CommentService")
 	CommentService commentService;
 	
-	@RequestMapping("/list") //댓글 리스트
+	@RequestMapping("/list/proc") 
     @ResponseBody
-    private List<CommentVO> mCommentServiceList(@RequestParam int bno, Model model) throws Exception{
+    private List<CommentVO> commentList(@RequestParam int bno, Model model) throws Exception{
 		CommentVO comment = new CommentVO();
 		comment.setBno(bno);
-	    return commentService.commentListService(comment);
+	    return commentService.commentList(comment);
     }
     
-    @RequestMapping("/insert") //댓글 작성 
+    @RequestMapping("/insert/proc") 
     @ResponseBody
-    private int mCommentServiceInsert(@RequestParam int bno, @RequestParam String content) throws Exception{
+    private int commentInsert(@RequestParam int bno, @RequestParam String content) throws Exception{
         
         CommentVO comment = new CommentVO();
         comment.setBno(bno);
         comment.setContent(content);
-        //로그인 기능을 구현했거나 따로 댓글 작성자를 입력받는 폼이 있다면 입력 받아온 값으로 사용하면 됩니다. 저는 따로 폼을 구현하지 않았기때문에 임시로 "test"라는 값을 입력해놨습니다.
         comment.setWriter("test");  
         
-        return commentService.commentInsertService(comment);
+        return commentService.commentInsert(comment);
     }
     
-    @RequestMapping("/update") //댓글 수정  
+    @RequestMapping("/update/proc") 
     @ResponseBody
-    private int mCommentServiceUpdateProc(@RequestParam int cno, @RequestParam String content) throws Exception{
+    private int commentUpdate(@RequestParam int cno, @RequestParam String content) throws Exception{
         
         CommentVO comment = new CommentVO();
         comment.setCno(cno);
         comment.setContent(content);
         
-        return commentService.commentUpdateService(comment);
+        return commentService.commentUpdate(comment);
     }
     
-    @RequestMapping("/delete/{cno}") //댓글 삭제  
+    @RequestMapping("/delete/proc/{cno}")
     @ResponseBody
-    private int mCommentServiceDelete(@PathVariable int cno) throws Exception{
+    private int commentDelete(@PathVariable int cno) throws Exception{
         
-        return commentService.commentDeleteService(cno);
+        return commentService.commentDelete(cno);
     }
 
 

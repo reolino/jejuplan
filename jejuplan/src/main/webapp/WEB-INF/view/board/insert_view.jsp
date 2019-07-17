@@ -4,24 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<tag:header/>
-<tag:boot_css/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert View</title>
-<script>
-
-$(document).ready(function() {
-	$('#uploadBtn').click(function (e) {
-		e.preventDefault();
-		$('#files').click();
-	});
-});
-
-function changeValue(obj){
-	$('#fileNm').val(obj.value);
-}
-
-</script>
+<tag:header/>
+<tag:boot_css/>
+<script type="text/javascript" src="/js/board/insert_view.js"></script>
 </head>
 <body>
 	<div class="container-scroller">

@@ -4,19 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<tag:header/>
-<tag:boot_css/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Update View</title>
-<script>
-
-$(document).ready(function() {
-	$('#backBtn').click(function (e) {
-		location.href = "board/detail/view/"+${bno};
-	});
-});
-
-</script>
+<tag:header/>
+<tag:boot_css/>
+<script type="text/javascript" src="/js/board/update_view.js"></script>
 </head>
 <body>
 	<div class="container-scroller">

@@ -6,107 +6,11 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<tag:header/>
-<tag:boot_css/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Detail View</title>
-<script>
-var bno = '${detail.bno}'; //게시글 번호
-
-$(document).ready(function() {
-	$('#attachDownBtn').click(function(){ 
-		window.location.href = "/board/fileDown/proc/"+${files.bno};
-	});
-	
-	$('[name=commentInsertBtn]').click(function(){ 
-    	var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-    	commentInsert(insertData); //Insert 함수호출(아래)
-	});
-	
-   commentList(); //페이지 로딩시 댓글 목록 출력 
-});
-
-function commentInsertEvent(){
-	var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-	commentInsert(insertData); //Insert 함수호출(아래)
-}
- 
-//댓글 목록 
-function commentList(){
-    $.ajax({
-        url : '/comment/list',
-        type : 'get',
-        data : {'bno':bno},
-        success : function(data){
-            var a =''; 
-            $.each(data, function(key, value){ 
-                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-                a += '<div class="commentInfo'+value.cno+'">'+'댓글번호 : '+value.cno+' / 작성자 : '+value.writer;
-                a += '<a onclick="commentUpdate('+value.cno+',\''+value.content+'\');"> 수정 </a>';
-                a += '<a onclick="commentDelete('+value.cno+');"> 삭제 </a> </div>';
-                a += '<div class="commentContent'+value.cno+'"> <p> 내용 : '+value.content +'</p>';
-                a += '</div></div>';
-            });
-            
-            $(".commentList").html(a);
-        }
-    });
-}
- 
-//댓글 등록
-function commentInsert(insertData){
-	$.ajax({
-   	url : '/comment/insert',
-      type : 'post',
-      data : insertData,
-      success : function(data){
-      	if(data == 1) {
-         	commentList(); //댓글 작성 후 댓글 목록 reload
-          	$('[name=content]').val('');
-      	}
-      }
-   });
-}
- 
-//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
-function commentUpdate(cno, content){
-    var a ='';
-    
-    a += '<div class="input-group">';
-    a += '<input type="text" class="form-control" name="content_'+cno+'" value="'+content+'"/>';
-    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+cno+');">수정</button> </span>';
-    a += '</div>';
-    
-    $('.commentContent'+cno).html(a);
-    
-}
- 
-//댓글 수정
-function commentUpdateProc(cno){
-    var updateContent = $('[name=content_'+cno+']').val();
-    
-    $.ajax({
-        url : '/comment/update',
-        type : 'post',
-        data : {'content' : updateContent, 'cno' : cno},
-        success : function(data){
-            if(data == 1) commentList(bno); //댓글 수정후 목록 출력 
-        }
-    });
-}
- 
-//댓글 삭제 
-function commentDelete(cno){
-    $.ajax({
-        url : '/comment/delete/'+cno,
-        type : 'post',
-        success : function(data){
-            if(data == 1) commentList(bno); //댓글 삭제후 목록 출력 
-        }
-    });
-}
- 
-</script>
+<tag:header/>
+<tag:boot_css/>
+<script type="text/javascript" src="/js/board/detail_view.js"></script>
 </head>
 <body>
 	<div class="container-scroller">
@@ -126,7 +30,9 @@ function commentDelete(cno){
 	            	<div class="col-md-12 grid-margin">
 	               	<div class="card">
 	                 		<div class="card-body">
-	                    		<form class="forms-sample" action="#" method="post" enctype="multipart/form-data">
+	                    		<form id="detail_frm" class="forms-sample" action="#" method="post" enctype="multipart/form-data">
+	                    			<input type="hidden" id="bno" name="bno" value="${detail.bno}">
+	                    		
 			           				<div class="form-group">
 			                    		<label for="subject">Subject</label>
 			                    		<input type="text" class="form-control" id="subject" name="subject" value="${detail.subject}" placeholder="input subjsect." disabled>
@@ -155,8 +61,8 @@ function commentDelete(cno){
 			                      
 			                   	<div class="template-demo">
 											<button type="button" class="btn btn-danger" onclick="location.href='/board/delete/proc/${detail.bno}'">Delete</button>
-	      								<button type="button" class="btn btn-normal" onclick="location.href='/board/update/view/${detail.bno}'">Update</button>
-	      								<button type="button" class="btn btn-info" onclick="location.href='/board/list/view'">List</button>
+	      								<button type="button" class="btn btn-warning" onclick="location.href='/board/update/view/${detail.bno}'">Update</button>
+	      								<button type="button" class="btn btn-success" onclick="location.href='/board/list/view'">List</button>
 			                    	</div>
 			                 	</form>
 	                  	</div>
@@ -166,7 +72,7 @@ function commentDelete(cno){
 	              	<div class="card-body">
 		              	<div style="padding:10px">
 			        			<label for="content">comment</label>
-					        	<form name="commentInsertForm">
+					        	<form id="comment_frm">
 					         	<div class="input-group">
 					               <input type="hidden" name="bno" value="${detail.bno}"/>
 					               <input type="text" class="form-control" id="content" name="content" placeholder="Input Comment">

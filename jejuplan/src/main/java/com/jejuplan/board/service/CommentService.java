@@ -9,21 +9,21 @@ import com.jejuplan.board.mapper.CommentMapper;
 @Service("com.jejuplan.board.service.CommentService")
 public class CommentService {
 	@Resource(name="com.jejuplan.board.mapper.CommentMapper")
-	CommentMapper mCommentMapper;
+	CommentMapper commentMapper;
     
-    public List<CommentVO> commentListService(CommentVO comment) throws Exception{
-        return mCommentMapper.commentList(comment);
+    public List<CommentVO> commentList(CommentVO comment) throws Exception{
+        return commentMapper.commentList(comment);
     }
     
-    public int commentInsertService(CommentVO comment) throws Exception{
-        return mCommentMapper.commentInsert(comment);
+    public int commentInsert(CommentVO comment) throws Exception{
+        return commentMapper.commentInsert(comment);
     }
     
-    public int commentUpdateService(CommentVO comment) throws Exception{
-        return mCommentMapper.commentUpdate(comment);
+    public int commentUpdate(CommentVO comment) throws Exception{
+        return commentMapper.commentUpdate(comment);
     }
     
-    public int commentDeleteService(int cno) throws Exception{
-        return mCommentMapper.commentDelete(cno);
+    public int commentDelete(int cno) throws Exception{
+        return commentMapper.commentDelete(cno);
     }
 }

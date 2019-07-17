@@ -4,63 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>register</title>
-	<tag:header/>
-	<tag:boot_css/>
-	
-	<script type="text/javascript">
-	$(document).ready(function(){
-		
-		$("#regBtn").click(function(){
-			var member_id = $("#member_id").val();
-			var member_pw = $("#member_pw").val();
-			var confirm_pw = $("#confirm_pw").val();
-			
-			if(member_id == ''){
-				alert('Input ID');
-				return;
-			}else if(member_pw == ''){
-				alert('Input Password');
-				return;
-			}else if(confirm_pw == ''){
-				alert('Input Confirm Password');
-				return;
-			}
-			else if(member_pw != confirm_pw){
-				alert('Password do not match');
-				return;
-			}
-			
-			var params = $("#ifrm").serialize();
-	
-			 $.ajax({
-				type:"post",
-	      	url : "/member/register/proc",
-	      	data:params,
-	         dataType : "json",
-	         async:false,
-	         success : function(data){
-					alert(data.message);
-					
-					if(data.result =='true'){
-						goLoginView();
-					} 
-	         },
-	         error :function(xhr, status, e){
-	         	alert('ajax Failed')
-	         }
-		  	}); 
-		}); 
-	});
-	
-	function goLoginView(){
-		$("#ifrm").attr("action", "/login/view");
-		$("#ifrm").submit();
-	}
-	
-	</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>register</title>
+<tag:header/>
+<tag:boot_css/>
+<script type="text/javascript" src="/js/member/register_view.js"></script>
 </head>
 <body>
 	<div class="container-scroller">
@@ -72,7 +21,6 @@
               <div class="auto-form-wrapper">
                 <form id="ifrm" action="#">
                 	<input type="hidden" id="member_auth" name="member_auth" value="admin">
-                
                   <div class="form-group">
                     <div class="input-group">
                       <input type="text" id="member_id" name="member_id" class="form-control" placeholder="ID" >
@@ -124,6 +72,5 @@
    	</div>
 	</div>
 	<tag:boot_js/>
-	
 </body>
 </html>
