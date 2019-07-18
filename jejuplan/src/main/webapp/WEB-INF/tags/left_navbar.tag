@@ -32,9 +32,9 @@
        	</div>
      	</li>
      	<li class="nav-item">
-	  		<a class="nav-link" href="#">
+	  		<a class="nav-link" href="/sample/crypt/view">
          	<i class="menu-icon typcn typcn-shopping-bag"></i>
-         	<span class="menu-title">Form elements</span>
+         	<span class="menu-title">Crypt Sample</span>
        	</a>
      	</li>
 	</ul>

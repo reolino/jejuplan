@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jejuplan.Util.CryptUtil;
+import com.jejuplan.board.service.BoardService;
 import com.jejuplan.member.domain.MemberVO;
 import com.jejuplan.member.service.LoginService;
 
@@ -23,14 +24,12 @@ public class LoginController {
 	@Resource(name="com.jejuplan.member.service.LoginService")
     LoginService LoginService;
 	
+	@Resource(name="com.jejuplan.board.service.BoardService")
+    BoardService boardService;
+	
 	@RequestMapping("/")
     private String index(Model model) throws Exception{
         return "index"; 
-    }
-	
-	@RequestMapping("/main")
-    private String main(Model model) throws Exception{
-        return "main_view"; 
     }
 	
 	@RequestMapping("/login/view")

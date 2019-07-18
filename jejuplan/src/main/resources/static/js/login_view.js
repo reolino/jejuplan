@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
 	$("#loginBtn").click(function(){
 		var member_id = $("#member_id").val();
 		var member_pw = $("#member_pw").val();
@@ -34,6 +35,6 @@ $(document).ready(function(){
 });
 	
 function goMainView(){
-	$("#ifrm").attr("action", "/main");
+	$("#ifrm").attr("action", "/board/list/view");
 	$("#ifrm").submit();
 }

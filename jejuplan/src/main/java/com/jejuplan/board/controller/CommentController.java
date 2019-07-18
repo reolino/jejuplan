@@ -1,7 +1,6 @@
 package com.jejuplan.board.controller;
 
 import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -31,33 +30,25 @@ public class CommentController {
     @RequestMapping("/insert/proc") 
     @ResponseBody
     private int commentInsert(@RequestParam int bno, @RequestParam String content) throws Exception{
-        
         CommentVO comment = new CommentVO();
         comment.setBno(bno);
         comment.setContent(content);
         comment.setWriter("test");  
-        
         return commentService.commentInsert(comment);
     }
     
     @RequestMapping("/update/proc") 
     @ResponseBody
     private int commentUpdate(@RequestParam int cno, @RequestParam String content) throws Exception{
-        
         CommentVO comment = new CommentVO();
         comment.setCno(cno);
         comment.setContent(content);
-        
         return commentService.commentUpdate(comment);
     }
     
     @RequestMapping("/delete/proc/{cno}")
     @ResponseBody
     private int commentDelete(@PathVariable int cno) throws Exception{
-        
         return commentService.commentDelete(cno);
     }
-
-
-    
 }

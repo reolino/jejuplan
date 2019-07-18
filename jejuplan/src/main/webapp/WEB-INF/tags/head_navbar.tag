@@ -1,14 +1,14 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 	<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-   	<a class="navbar-brand brand-logo" href="index.html">
+   	<a class="navbar-brand brand-logo" href="/board/list/view">
       	<img src="/lib/boot/assets/images/logo.svg" alt="logo" /> </a>
-    	<a class="navbar-brand brand-logo-mini" href="index.html">
+    	<a class="navbar-brand brand-logo-mini" href="/board/list/view">
       	<img src="/lib/boot/assets/images/logo-mini.svg" alt="logo" /> </a>
   	</div>
   	<div class="navbar-menu-wrapper d-flex align-items-center">
 	<ul class="navbar-nav">
-   	<li class="nav-item font-weight-semibold d-none d-lg-block">Help : +050 1111 2222</li>
+   	<li class="nav-item font-weight-semibold d-none d-lg-block">Help : +010 1111 2222</li>
    	<li class="nav-item dropdown language-dropdown">
      		<a class="nav-link dropdown-toggle px-2 d-flex align-items-center" id="LanguageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
          	<div class="d-inline-flex mr-0 mr-md-3">

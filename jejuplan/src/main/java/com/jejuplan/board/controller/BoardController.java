@@ -29,11 +29,13 @@ public class BoardController {
     @RequestMapping("/list/view")
     private String boardListView(Model model) throws Exception{
         model.addAttribute("list", boardService.boardList());
+        model.addAttribute("title","List View");
         return "board/list_view"; 
     }
     
     @RequestMapping("/insert/view")
-    private String boardInsertView(){
+    private String boardInsertView(Model model){
+        model.addAttribute("title","Insert View");
         return "board/insert_view";
     }
     
@@ -66,12 +68,14 @@ public class BoardController {
     private String boardDetailView(@PathVariable int bno, Model model) throws Exception{
     	model.addAttribute("detail", boardService.boardDetail(bno));
         model.addAttribute("files", boardService.fileDetail(bno)); 
+        model.addAttribute("title","Detail View");
         return "board/detail_view";
     }
     
     @RequestMapping("/update/view/{bno}")
     private String boardUpdateForm(@PathVariable int bno, Model model) throws Exception{
         model.addAttribute("detail", boardService.boardDetail(bno));
+        model.addAttribute("title","Update View");
         return "board/update_view";
     }
     
@@ -100,7 +104,8 @@ public class BoardController {
     }
     
     @RequestMapping("/rest/view") 
-    private String test() throws Exception{
+    private String restView(Model model) throws Exception{
+        model.addAttribute("title","Rest View");
         return "board/rest_view";
     }
 }
