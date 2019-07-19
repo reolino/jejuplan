@@ -20,9 +20,9 @@
 
 	<appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-	   	<fileNamePattern>${LOG_PATH}/${LOG_FILE_NAME}-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+	   	<fileNamePattern>C:\logs\jejuplan\jejuplan-dev-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
 	      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-	      	<maxFileSize>${LOG_FILESIZE_LOG}</maxFileSize>
+	      	<maxFileSize>100MB</maxFileSize>
 	      </timeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
 	   <encoder>

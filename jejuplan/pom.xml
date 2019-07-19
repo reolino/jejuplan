@@ -11,6 +11,7 @@
 	<groupId>com.jejuplan</groupId>
 	<artifactId>jejuplan</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>demo</name>
 	<description>jejuplan</description>
 
