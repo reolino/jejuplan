@@ -1,6 +1,7 @@
 package com.jejuplan.member.controller;
 
 import java.util.HashMap;
+
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -18,7 +19,10 @@ import com.jejuplan.board.service.BoardService;
 import com.jejuplan.member.domain.MemberVO;
 import com.jejuplan.member.service.LoginService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 @SessionAttributes({"member_id", "member_auth"})
 public class LoginController {
 	@Resource(name="com.jejuplan.member.service.LoginService")
@@ -26,9 +30,10 @@ public class LoginController {
 	
 	@Resource(name="com.jejuplan.board.service.BoardService")
     BoardService boardService;
-	
+
 	@RequestMapping("/")
     private String index(Model model) throws Exception{
+		log.debug( "Springboot Start" );
         return "index"; 
     }
 	

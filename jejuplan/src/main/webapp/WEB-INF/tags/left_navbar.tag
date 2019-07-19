@@ -37,5 +37,11 @@
          	<span class="menu-title">Crypt Sample</span>
        	</a>
      	</li>
+     	<li class="nav-item">
+	  		<a class="nav-link" href="/sample/admin_template/demo/index.html">
+         	<i class="menu-icon typcn typcn-shopping-bag"></i>
+         	<span class="menu-title">Boot Sample</span>
+       	</a>
+     	</li>
 	</ul>
 </nav>

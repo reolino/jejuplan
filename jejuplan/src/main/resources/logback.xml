@@ -1,32 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+	<!-- setting -->
+	<springProfile name="qa">
+   	<property resource="logback_qa.properties"/>
+   </springProfile>
+	
+	<!-- log packagename -->
+    <property name="LOG_PACKAGE_NAME" value="${log.config.packagename}"/>
+    <property name="LOG_PATH" value="${log.config.path}"/>
+    <property name="LOG_FILE_NAME" value="${log.config.filename}"/>
+    <property name="LOG_DAYS" value="${log.config.days}"/>
+    <property name="LOG_FILESIZE_LOG" value="${log.config.filesizelog}"/>
+    <property name="LOG_TOTAL_FILESIZE" value="${log.config.totalfilesize}"/>
+    <property name="LOG_FILE_MIN" value="${log.config.min}"/>
+    <property name="LOG_FILE_MAX" value="${log.config.max}"/>
+    <property name="LOG_PATTERN"
+              value="%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"/>
+    <property name="LOG_PATTERN_LIVE"
+              value="%d{HH:mm:ss.SSS} [%-5level] - %msg%n"/>
+
 	<appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-	    	<fileNamePattern>mylog-%d{yyyy-MM-dd}.%i.txt.zip</fileNamePattern>
-	      	<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-	        	<maxFileSize>100MB</maxFileSize>
-	      	</timeBasedFileNamingAndTriggeringPolicy>
-	  	</rollingPolicy>
-      	<encoder>
-        	<pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
-       	</encoder>
-  	</appender>
-  	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    	<encoder>
-      		<pattern>%d{yyyyMMdd HH:mm:ss.SSS} [%thread] %-3level %logger{5} - %msg %n</pattern>
-    	</encoder>
-  	</appender>
-  
-	<logger name="jdbc" level="OFF"/>
-	<logger name="jdbc.sqlonly" level="OFF"/>
-	<logger name="jdbc.sqltiming" level="DEBUG"/>
-	<logger name="jdbc.audit" level="OFF"/>
-	<logger name="jdbc.resultset" level="OFF"/>
-	<logger name="jdbc.resultsettable" level="DEBUG"/>
-	<logger name="jdbc.connection" level="OFF"/>
-  
-  	<root level="INFO">
-    	<appender-ref ref="STDOUT" />
+	   	<fileNamePattern>${LOG_PATH}/${LOG_FILE_NAME}-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+	      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	      	<maxFileSize>${LOG_FILESIZE_LOG}</maxFileSize>
+	      </timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	   <encoder>
+	   	<pattern>${LOG_PATTERN}</pattern>
+	   </encoder>
+	</appender>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+	   	<Pattern>${LOG_PATTERN_LIVE}</Pattern>
+	   </layout>
+	</appender>
+
+ 	<logger name="jdbc" level="OFF"/>
+  	<logger name="jdbc.sqlonly" level="OFF"/>
+  	<logger name="jdbc.sqltiming" level="DEBUG"/>
+  	<logger name="jdbc.audit" level="OFF"/>
+  	<logger name="jdbc.resultset" level="OFF"/>
+  	<logger name="jdbc.resultsettable" level="DEBUG"/>
+  	<logger name="jdbc.connection" level="OFF"/>
+
+	<root level="INFO">
+ 		<appender-ref ref="STDOUT" />
+ 		<appender-ref ref="ROLLING"/>
   	</root>
-  
+     
 </configuration>
+
