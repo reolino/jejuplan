@@ -7,32 +7,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 	<select id="commentCount" resultType="int">
         SELECT COUNT(*)
-        FROM COMMENT
+        FROM TB_COMMENT
     </select>
     
     <select id="commentList" parameterType="com.jejuplan.board.domain.CommentVO" resultType="com.jejuplan.board.domain.CommentVO">
-        SELECT *
-        FROM COMMENT
-        WHERE BNO = #{bno}
-        ORDER BY BNO DESC
+        SELECT A.*, B.MEMBER_NM AS REG_USER_NM
+        FROM TB_COMMENT A, TB_MEMBER B
+        WHERE A.REG_USER_ID = B.MEMBER_ID 
+        AND A.BOARD_NO = #{board_no}
+        ORDER BY A.COMMENT_NO DESC
     </select>
     
     <insert id="commentInsert" parameterType="com.jejuplan.board.domain.CommentVO">
         INSERT INTO
-        COMMENT	(BNO, CONTENT, WRITER, REG_DATE)
-        VALUES (#{bno},#{content},#{writer},now()) 
+        TB_COMMENT (BOARD_NO, MENU_ID , CONTENT, REG_USER_ID, REG_DATE)
+        VALUES (#{board_no}, #{menu_id},#{content},#{reg_user_id},now()) 
     </insert>
     
     <update id="commentUpdate" parameterType="com.jejuplan.board.domain.CommentVO">
-        UPDATE COMMENT
-        SET
-        CONTENT = #{content}
-        WHERE CNO = #{cno}
+        UPDATE TB_COMMENT
+        SET CONTENT = #{content}
+        ,MOD_DATE = now()
+        WHERE COMMENT_NO = #{comment_no}
     </update>
     
     <delete id="commentDelete" parameterType="int">
-        DELETE FROM COMMENT 
-        WHERE CNO = #{cno}
+        DELETE FROM TB_COMMENT 
+        WHERE COMMENT_NO = #{comment_no}
     </delete>
     
 </mapper>

@@ -16,8 +16,8 @@ public class BoardService {
         return boardMapper.boardList();
     }
     
-    public BoardVO boardDetail(int bno) throws Exception{
-        return boardMapper.boardDetail(bno);
+    public BoardVO boardDetail(int board_no) throws Exception{
+        return boardMapper.boardDetail(board_no);
     }
     
     public int boardInsert(BoardVO board) throws Exception{
@@ -28,8 +28,8 @@ public class BoardService {
         return boardMapper.boardUpdate(board);
     }
     
-    public int boardDelete(int bno) throws Exception{
-        return boardMapper.boardDelete(bno);
+    public int boardDelete(BoardVO board) throws Exception{
+        return boardMapper.boardDelete(board);
     }
     
     public int fileInsert(FileVO file) throws Exception{

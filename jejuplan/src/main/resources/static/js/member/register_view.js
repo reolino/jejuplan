@@ -20,7 +20,7 @@ $(document).ready(function(){
 			return;
 		}
 		
-		var params = $("#ifrm").serialize();
+		var params = $("#ifrm").serialize()+"&member_auth=admin";
 
 		 $.ajax({
 			type:"post",

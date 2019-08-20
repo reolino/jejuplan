@@ -13,9 +13,6 @@ $(document).ready(function(){
 	        success : function(data){
 	        	var result = JSON.stringify(data);
 	         	$("#resultArea").val(result);
-				/* $.each(data,function(index, item){
-					alert(item.bno);
-	            }); */
 	        },
            	error :function(){
            		alert('Ajax Failed')

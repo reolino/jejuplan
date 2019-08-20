@@ -12,8 +12,8 @@ $(document).ready(function(){
 			return;
 		}
 		
-		var params = $("#ifrm").serialize();
-	
+		var params = $("#ifrm").serialize()+ "&member_auth=admin";
+		
 		$.ajax({
 			type:"post",
 			url : "/member/login/proc",
@@ -35,6 +35,6 @@ $(document).ready(function(){
 });
 	
 function goMainView(){
-	$("#ifrm").attr("action", "/board/list/view");
+	$("#ifrm").attr("action", "/main/view");
 	$("#ifrm").submit();
 }

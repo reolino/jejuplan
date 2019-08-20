@@ -17,10 +17,9 @@ import com.jejuplan.Util.CryptUtil;
 @RequestMapping("/sample")
 public class SampleController {
 		
-	@RequestMapping("/crypt/view")
+	@RequestMapping("/decrypt/view")
     private String index(Model model) throws Exception{
-        model.addAttribute("title", "Crypt View");
-        return "/sample/crypt_view"; 
+        return "/sample/decrypt_view"; 
     }
 	
 	@RequestMapping(value="/encrypt/proc", method=RequestMethod.GET)

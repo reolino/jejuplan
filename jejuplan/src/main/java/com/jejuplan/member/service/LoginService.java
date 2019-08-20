@@ -3,7 +3,6 @@ package com.jejuplan.member.service;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import com.jejuplan.board.domain.BoardVO;
 import com.jejuplan.member.domain.MemberVO;
 import com.jejuplan.member.mapper.LoginMapper;
 

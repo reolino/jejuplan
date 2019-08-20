@@ -13,22 +13,21 @@
 </head>
 <body>
 	<div class="container-scroller">
-      <div class="container-fluid page-body-wrapper full-page-wrapper">
-        <div class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
-          <div class="row w-100">
-            <div class="col-lg-4 mx-auto">
-              <h2 class="text-center mb-4">Register</h2>
-              <div class="auto-form-wrapper">
-                <form id="ifrm" action="#">
-                	<input type="hidden" id="member_auth" name="member_auth" value="admin">
-                  <div class="form-group">
-                    <div class="input-group">
-                      <input type="text" id="member_id" name="member_id" class="form-control" placeholder="ID" >
-                      <div class="input-group-append">
-                        <span class="input-group-text">
-                          <i class="mdi mdi-check-circle-outline"></i>
-                        </span>
-                      </div>
+  		<div class="container-fluid page-body-wrapper full-page-wrapper">
+      	<div class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
+         	<div class="row w-100">
+            	<div class="col-lg-4 mx-auto">
+              		<h2 class="text-center mb-4">Register</h2>
+              		<div class="auto-form-wrapper">
+                	<form id="ifrm" action="#">
+                  	<div class="form-group">
+                    		<div class="input-group">
+                      		<input type="text" id="member_id" name="member_id" class="form-control" placeholder="ID" >
+                      		<div class="input-group-append">
+                        		<span class="input-group-text">
+                          			<i class="mdi mdi-check-circle-outline"></i>
+                        		</span>
+                      		</div>
                     </div>
                   </div>
                   <div class="form-group">

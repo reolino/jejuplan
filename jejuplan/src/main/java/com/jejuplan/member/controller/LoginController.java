@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jejuplan.Util.CryptUtil;
-import com.jejuplan.board.service.BoardService;
 import com.jejuplan.member.domain.MemberVO;
 import com.jejuplan.member.service.LoginService;
 
@@ -23,14 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@SessionAttributes({"member_id", "member_auth"})
+@SessionAttributes({"member_id", "member_auth", "member_auth_nm"})
 public class LoginController {
 	@Resource(name="com.jejuplan.member.service.LoginService")
     LoginService LoginService;
 	
-	@Resource(name="com.jejuplan.board.service.BoardService")
-    BoardService boardService;
-
 	@RequestMapping("/")
     private String index(Model model) throws Exception{
 		log.debug( "Springboot Start" );
@@ -54,6 +50,7 @@ public class LoginController {
 			if(paramPw.equals(userPw)) {
 				model.addAttribute("member_id", resultVo.getMember_id());
 		        model.addAttribute("member_auth", resultVo.getMember_auth()); 
+		        model.addAttribute("member_auth_nm", resultVo.getMember_auth_nm()); 
 		        model.addAttribute("className", this.getClass());
 
 	    		map.put("result", "true");
@@ -87,7 +84,7 @@ public class LoginController {
 			memberVo.setMember_pw(encryptPwd);
 			LoginService.memberInsert(memberVo); 
 	        map.put("result", "true");
-	        map.put("message", "Resist Ok!");
+	        map.put("message", "Regist Ok!");
 		}
 		
 		return map; 

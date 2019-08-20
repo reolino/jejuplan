@@ -5,59 +5,73 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.jejuplan.board.mapper.BoardMapper">
  
+   <select id="boardList" resultType="com.jejuplan.board.domain.BoardVO">
+   	SELECT A.BOARD_NO
+      , A.MENU_ID
+      , A.TITLE
+      , A.REG_USER_ID
+      , B.MEMBER_ID AS REG_USER_NM
+      , A.REG_DATE
+      FROM TB_BOARD A, TB_MEMBER B
+      WHERE A.REG_USER_ID = B.MEMBER_ID
+      AND A.USE_YN = 'Y'
+      <if test="menu_id != menu_id">
+      AND A.MENU_ID = #{menu_id}
+      </if>
+      ORDER BY A.SORT_NO ASC, A.REG_DATE DESC
+   </select>
+ 
 	<select id="boardCount" resultType="int">
-        SELECT COUNT(*)
-        FROM BOARD
-    </select>
+		SELECT COUNT(*)
+      FROM BOARD
+   </select>
     
-    <select id="boardList" resultType="com.jejuplan.board.domain.BoardVO">
-        SELECT *
-        FROM BOARD
-        ORDER BY REG_DATE DESC
-    </select>
+   <select id="boardDetail" parameterType="int" resultType="com.jejuplan.board.domain.BoardVO">
+   	SELECT A.*, B.MEMBER_NM AS REG_USER_NM
+      FROM TB_BOARD A , TB_MEMBER B
+      WHERE A.REG_USER_ID = B.MEMBER_ID 
+      AND A.BOARD_NO = #{board_no}
+   </select>
     
-    <select id="boardDetail" parameterType="int" resultType="com.jejuplan.board.domain.BoardVO">
-        SELECT *
-        FROM BOARD
-        WHERE BNO = #{bno}
-    </select>
+   <insert id="boardInsert" parameterType="com.jejuplan.board.domain.BoardVO">
+      INSERT INTO TB_BOARD
+      (MENU_ID,TITLE,CONTENT,REG_USER_ID,REG_DATE)
+      VALUES
+      (#{menu_id} ,#{title},#{content},#{reg_user_id},now()) 
+   </insert>
     
-    <insert id="boardInsert" useGeneratedKeys="true" keyProperty="bno" parameterType="com.jejuplan.board.domain.BoardVO">
-        INSERT INTO BOARD
-        (BNO,MENUID,SUBJECT,CONTENT,WRITER,REG_DATE)
-        VALUES
-        (#{bno},#{menuid} ,#{subject},#{content},#{writer},now()) 
-    </insert>
+   <update id="boardUpdate" parameterType="com.jejuplan.board.domain.BoardVO">
+      UPDATE TB_BOARD
+      SET MOD_USER_ID = #{mod_user_id}
+      , MOD_DATE = now()
+      <if test="title != null">
+      , TITLE = #{title}
+      </if>
+      <if test="content != null">
+      , CONTENT = #{content}
+      </if>
+      WHERE BOARD_NO = #{board_no}
+   </update>
     
-    <update id="boardUpdate" parameterType="com.jejuplan.board.domain.BoardVO">
-        UPDATE BOARD
-        SET
-        <if test="subject != null">
-       	SUBJECT = #{subject}
-        </if>
-        <if test="subject != null and content != null"> , </if>
-        <if test="content != null">
-        CONTENT = #{content}
-        </if>
-        WHERE BNO = #{bno}
-    </update>
+   <update id="boardDelete" parameterType="com.jejuplan.board.domain.BoardVO">
+   	UPDATE TB_BOARD 
+      SET MOD_USER_ID = #{mod_user_id}
+      , MOD_DATE = now()
+      , USE_YN = 'N'
+      WHERE BOARD_NO = #{board_no}
+   </update>
     
-    <delete id="boardDelete" parameterType="int">
-        DELETE FROM BOARD 
-        WHERE BNO = #{bno}
-    </delete>
-    
-    <insert id="fileInsert" parameterType="com.jejuplan.board.domain.FileVO">
-       	INSERT INTO FILES 
-       	(FNO, BNO, FILENAME, FILEORINAME, FILEURL)
-       	VALUES
-       	(#{fno},#{bno},#{fileName},#{fileOriName},#{fileUrl})
+   <insert id="fileInsert" parameterType="com.jejuplan.board.domain.FileVO">
+   	INSERT INTO TB_FILES 
+      (FNO, BOARD_NO, FILENAME, FILEORINAME, FILEURL)
+      VALUES
+      (#{fno},#{board_no},#{fileName},#{fileOriName},#{fileUrl})
 	</insert>
 	
 	<select id="fileDetail" parameterType="int" resultType="com.jejuplan.board.domain.FileVO">
-    	SELECT *
-    	FROM Files
-    	WHERE BNO = #{bno}
+   	SELECT *
+    	FROM TB_FILES
+    	WHERE BOARD_NO = #{board_no}
 	</select>
 
 </mapper>

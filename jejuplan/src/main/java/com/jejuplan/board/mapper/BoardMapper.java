@@ -12,13 +12,13 @@ public interface BoardMapper {
     
     public List<BoardVO> boardList() throws Exception;
     
-    public BoardVO boardDetail(int bno) throws Exception;
+    public BoardVO boardDetail(int board_no) throws Exception;
     
     public int boardInsert(BoardVO board) throws Exception;
     
     public int boardUpdate(BoardVO board) throws Exception;
     
-    public int boardDelete(int bno) throws Exception;
+    public int boardDelete(BoardVO board) throws Exception;
     
     public int fileInsert(FileVO board) throws Exception;
     
