@@ -6,12 +6,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	  	<meta charset="utf-8">
-	   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	   <title>Jeju Plan</title>
-	   <tag:header/>
-	  	<tag:boot_css/>
-	  	<script type="text/javascript" src="/js/main_view.js"></script>
+		<meta charset="utf-8">
+	   	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	   	<title>Jeju Plan</title>
+	   	<tag:header/>
+	   	<tag:boot_css/>
+	   	<script type="text/javascript" src="/js/main_view.js"></script>
   	</head>
 	<body>
 		<input type="hidden" id="p_menu_url" value="${first_menu.menu_url}"/>
@@ -48,11 +48,11 @@
 	            </div>
 	            <div class="row">
 	            	<div class="col-md-12 grid-margin">
-	               	<div class="card">
+	               		<div class="card">
 	                 		<div class="card-body">
-	                    		<div class="row" id="contents_div">	     
+	                    		<div id="contents_div">	     
 	                    		</div>
-	                  	</div>
+	                  		</div>
 	                	</div>
 	              	</div>
 	            </div>
@@ -62,6 +62,7 @@
       </div>
     </div>
 	<tag:boot_js/>
+
   </body>
 </html>
 

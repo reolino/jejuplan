@@ -5,33 +5,22 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags"%>   
 <!DOCTYPE html>
 <html>
+<head>
+  	<link rel="stylesheet" type="text/css" href="/lib/toast_ui/grid/tui-grid.min.css" />
+  	<link rel="stylesheet" type="text/css" href="/lib/toast_ui/grid/tui-pagination.css" />
+  	<style></style>
+</head>
 <body>
-<div class="table-responsive">
-	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-   	<thead>
-     		<tr>
-         	<th>No</th>
-           	<th>TITLE</th>
-           	<th>Writer</th>
-           	<th>Date</th>
-         </tr>
-      </thead>
-      <tbody>
-	   <c:forEach var="l" items="${list}">
-     		<tr onclick="movePage('/board/detail/view/${l.board_no}')">
-   			<td>${l.board_no}</td>
-     			<td>${l.title}</td>
-      		<td>${l.reg_user_nm}</td>
-      		<td><fmt:formatDate value="${l.reg_date}" pattern="yyyy.MM.dd"/></td>
-			</tr>
-		</c:forEach>
-      </tbody>
-	</table>
-</div>
-						          
-<div class="template-demo">
-	<button class="btn btn-primary" onclick="movePage('/board/insert/view')">write</button>
-</div>
+	<div id="grid"></div>
+	
+    <div class="template-demo">
+		<button class="btn btn-primary" onclick="movePage('/board/insert/view')">write</button>
+	</div>
 </body>
+  	<script type="text/javascript" src="/lib/toast_ui/grid/tui-code-snippet.js"></script>
+	<script type="text/javascript" src="/lib/toast_ui/grid/tui-pagination.js"></script>
+	<script type="text/javascript" src="/lib/toast_ui/grid/tui-grid.min.js"></script>
+	<script type="text/javascript" src="/js/common/grid.js"></script>
+  	<script type="text/javascript" src="/js/board/list_view.js"></script>
 </html>
 

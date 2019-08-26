@@ -12,8 +12,12 @@ public class BoardService {
 	@Resource(name="com.jejuplan.board.mapper.BoardMapper")
     BoardMapper boardMapper;
     
-    public List<BoardVO> boardList() throws Exception{
-        return boardMapper.boardList();
+	public int boardListCount(BoardVO board) throws Exception{
+		return boardMapper.boardListCount(board);
+	}
+	
+    public List<BoardVO> boardList(BoardVO board) throws Exception{
+        return boardMapper.boardList(board);
     }
     
     public BoardVO boardDetail(int board_no) throws Exception{

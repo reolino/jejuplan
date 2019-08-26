@@ -18,13 +18,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.jejuplan.Util.CryptUtil;
 import com.jejuplan.Util.FileUtil;
+import com.jejuplan.Util.GridUtil;
 import com.jejuplan.board.domain.BoardVO;
 import com.jejuplan.board.domain.FileVO;
 import com.jejuplan.board.service.BoardService;
+import com.jejuplan.main.service.MainService;
 import com.jejuplan.member.domain.MemberVO;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping("/board")
@@ -32,13 +38,24 @@ public class BoardController {
 	@Resource(name = "com.jejuplan.board.service.BoardService")
 	BoardService boardService;
 
+	@Resource(name="com.jejuplan.main.service.MainService")
+    MainService mainService;
+	
 	@Value("${file.upload.directory}")
 	String uploadFileDir;
 
 	@RequestMapping("/list/view")
 	private String boardListView(Model model) throws Exception {
-		model.addAttribute("list", boardService.boardList());
 		return "board/list_view";
+	}
+	
+	@RequestMapping(value="/list/proc", method=RequestMethod.GET)
+	@ResponseBody
+	public JSONObject boardList(HttpServletRequest request ,@ModelAttribute BoardVO boardVO, Model model) throws Exception { 
+		int current_page = boardVO.getPage();
+		int total_cnt = boardService.boardListCount(boardVO);
+		JSONObject jo = GridUtil.getGridListJson(boardService.boardList(boardVO), current_page, total_cnt);
+		return jo;
 	}
 
 	@RequestMapping("/insert/view")

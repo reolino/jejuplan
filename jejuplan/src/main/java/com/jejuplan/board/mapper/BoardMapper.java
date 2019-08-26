@@ -10,7 +10,9 @@ public interface BoardMapper {
 	
     public int boardCount() throws Exception;
     
-    public List<BoardVO> boardList() throws Exception;
+    public int boardListCount(BoardVO board) throws Exception;
+    
+    public List<BoardVO> boardList(BoardVO board) throws Exception;
     
     public BoardVO boardDetail(int board_no) throws Exception;
     
