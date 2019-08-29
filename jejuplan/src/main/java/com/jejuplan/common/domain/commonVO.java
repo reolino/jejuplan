@@ -1,7 +1,7 @@
 package com.jejuplan.common.domain;
 
 public class commonVO {
-	private int page ;
+	private int page = 1;
 
 	public int getPage() {
 		return page;

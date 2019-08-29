@@ -18,7 +18,7 @@
            	</div>
          	<div class="form-group">
     				<label for="content">content</label>
-    				<textarea class="form-control" id="content" name="content" rows="3"></textarea>
+    				<tag:editor/>
 				</div>
         		<div class="form-group">
             	<label>File upload</label>

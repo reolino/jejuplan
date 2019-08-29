@@ -13,12 +13,13 @@
         	<form id="ifrm" action="#" method="post">
   				<input type="hidden" id="board_no" name="board_no" value="${detail.board_no}"/>
 			  	<div class="form-group">
-			   	<label for="subject">title</label>
+			   		<label for="subject">title</label>
 			    	<input type="text" class="form-control" id="title" name="title" value="${detail.title}">
 			  	</div>
 			  	<div class="form-group">
-			   	<label for="content">content</label>
-			    	<textarea class="form-control" id="content" name="content" rows="3">${detail.content}</textarea>
+			   		<label for="content">content</label>
+			   		<input type="hidden" id="content" name="content" value="${detail.content}"/>
+    				<tag:editor/>
 			  	</div>
 			  	<div class="template-demo">
 			  		<button type="button" class="btn btn-primary" id="saveBtn">Save</button>

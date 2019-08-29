@@ -89,6 +89,8 @@ $(document).ready(function() {
 	calendar = flatpickr(".datepicker",{
 		dateFormat: "m/d/y"
 	});
+	
+	searchItem();
 });
 
 /*

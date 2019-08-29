@@ -23,7 +23,8 @@ public class BoardRestController {
 	@RequestMapping(value = "/rest/list/proc", method = RequestMethod.GET)
 	public ResponseEntity<List<BoardVO>> list() throws Exception {
 		List<BoardVO> boardlist = new ArrayList<BoardVO>();
-		//boardlist = boardService.boardList();
+		BoardVO board = new BoardVO();
+		boardlist = boardService.boardList(board);
 	    
 	    return new ResponseEntity<List<BoardVO>>(boardlist, HttpStatus.OK) ;
 	}

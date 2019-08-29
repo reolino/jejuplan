@@ -24,7 +24,11 @@ pageEncoding="UTF-8"%>
 	     		</div>
 	      	<div class="form-group">
 	 				<label for="content">Content</label>
+	 				<input type="hidden" id="content" name="content" value="${detail.content}"> 
+	 				<tag:viewer/>
+	 				<!--
 	 				<textarea class="form-control" id="content" name="content" rows="3" disabled="disabled">${detail.content}</textarea>
+	 				-->
 				</div>
 	<!-- 
 	<div class="form-group">
