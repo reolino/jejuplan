@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="/lib/boot/assets/vendors/iconfonts/ionicons/css/ionicons.css">
 <link rel="stylesheet" href="/lib/boot/assets/vendors/iconfonts/typicons/src/font/typicons.css">
 <link rel="stylesheet" href="/lib/boot/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+<link rel="stylesheet" href="/lib/boot/assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
+
 <link rel="stylesheet" href="/lib/boot/assets/vendors/css/vendor.bundle.base.css">
 <link rel="stylesheet" href="/lib/boot/assets/vendors/css/vendor.bundle.addons.css">
 

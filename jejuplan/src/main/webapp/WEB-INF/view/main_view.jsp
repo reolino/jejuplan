@@ -16,6 +16,7 @@
 	<body>
 		<input type="hidden" id="p_menu_url" value="${first_menu.menu_url}"/>
 		<input type="hidden" id="p_menu_nm" value="${first_menu.tree_menu}"/>
+		<input type="hidden" id="p_menu_id" value="${first_menu.menu_id}"/>
    	<div class="container-scroller">
       <tag:head_navbar/>
       <div class="container-fluid page-body-wrapper">

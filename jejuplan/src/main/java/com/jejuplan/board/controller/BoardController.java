@@ -49,13 +49,15 @@ public class BoardController {
 		return "board/list_view";
 	}
 	
-	@RequestMapping(value="/list/proc", method=RequestMethod.GET)
+	@RequestMapping(value="/list/proc", method=RequestMethod.POST)
 	@ResponseBody
-	public JSONObject boardList(HttpServletRequest request ,@ModelAttribute BoardVO boardVO, Model model) throws Exception { 
-		int current_page = boardVO.getPage();
+	public  Map<String, Object> boardList(HttpServletRequest request ,@ModelAttribute BoardVO boardVO, Model model) throws Exception { 
+		Map<String, Object> map = new HashMap<String, Object>();
 		int total_cnt = boardService.boardListCount(boardVO);
-		JSONObject jo = GridUtil.getGridListJson(boardService.boardList(boardVO), current_page, total_cnt);
-		return jo;
+		map.put("result", "true");
+		map.put("total_cnt", total_cnt);
+		map.put("list", boardService.boardList(boardVO));
+		return map; 
 	}
 
 	@RequestMapping("/insert/view")

@@ -18,6 +18,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="menu_id != menu_id">
       	AND A.MENU_ID = #{menu_id}
     	</if>
+    	<if test="reg_user_id != reg_user_id">
+      	AND A.REG_USER_ID = #{reg_user_id}
+    	</if>
+    	<if test="reg_date != reg_date">
+      	AND A.REG_DATE = #{reg_date}
+    	</if>
 	</select>
  
 	<select id="boardList" resultType="com.jejuplan.board.domain.BoardVO">
@@ -32,9 +38,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    FROM TB_BOARD A, TB_MEMBER B
 	    WHERE A.REG_USER_ID = B.MEMBER_ID
 	    AND A.USE_YN = 'Y'
-	    <if test="menu_id != menu_id">
+	    <if test="menu_id != '' and menu_id != null" >
       		AND A.MENU_ID = #{menu_id}
       	</if>
+      	<if test="title != '' and title != null">
+      		AND A.TITLE = #{title}
+    	</if>
+      	<if test="user_id != '' and user_id != null">
+      		AND A.REG_USER_ID = #{user_id}
+    	</if>
+    	<if test="reg_date_start != '' and reg_date_start != null">
+      		AND DATE_FORMAT(A.REG_DATE, '%y/%m/%d ') BETWEEN #{reg_date_start} AND #{reg_date_end}
+    	</if>
       	<include refid="CommonMapper.COMMON_PAGING_BOTTOM"/>
 	 	ORDER BY R1.SORT_NO ASC, R1.REG_DATE DESC
 		<include refid="CommonMapper.COMMON_PAGING_TAIL"/>

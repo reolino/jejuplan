@@ -1,24 +1,11 @@
-function selGridMake(col){
-	var dataSource = {
-	  api: {
-	      readData: { url: '/board/list/proc', method: 'GET' },
-	      createData: { url: '/api/create', method: 'POST' },
-	      updateData: { url: '/api/update', method: 'PUT' },
-	      deleteData: { url: '/api/delete', method: 'DELETE' },
-	      modifyData: { url: '/api/modify', method: 'POST' }
-	  }
-	}
+function selGridInit(col){
 		
 	var  grid = new tui.Grid({
 			el: document.getElementById('grid'),
-			data: dataSource,
 			scrollX: true,
 			scrollY: true,
 			minBodyHeight: 90,
 			rowHeaders: ['rowNum'],
-			pageOptions: {
-				perPage: 10
-			},
 			columns: col
 	});
 	 
@@ -38,4 +25,8 @@ function selGridMake(col){
 
 function getDataRow(grid){
 	return	grid.getRow(grid.getFocusedCell().rowKey);
+}
+
+function gridReset(grid){
+	grid.reloadData();
 }
