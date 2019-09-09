@@ -1683,7 +1683,7 @@ span.flatpickr-weekday {
   margin-bottom: 10px;
   display:flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
 }
 

@@ -4,7 +4,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.jejuplan.board.domain.BoardVO;
-import com.jejuplan.board.domain.FileVO;
 import com.jejuplan.board.mapper.BoardMapper;
 
 @Service("com.jejuplan.board.service.BoardService")
@@ -12,6 +11,10 @@ public class BoardService {
 	@Resource(name="com.jejuplan.board.mapper.BoardMapper")
     BoardMapper boardMapper;
     
+	public int boardNo() throws Exception{
+		return boardMapper.boardNo();
+	}
+	
 	public int boardListCount(BoardVO board) throws Exception{
 		return boardMapper.boardListCount(board);
 	}
@@ -34,13 +37,5 @@ public class BoardService {
     
     public int boardDelete(BoardVO board) throws Exception{
         return boardMapper.boardDelete(board);
-    }
-    
-    public int fileInsert(FileVO file) throws Exception{
-        return boardMapper.fileInsert(file);
-    }
-    
-    public FileVO fileDetail(int bno) throws Exception{
-        return boardMapper.fileDetail(bno);
     }
 }

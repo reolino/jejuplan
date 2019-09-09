@@ -6,13 +6,15 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="/js/common/file.js" ></script>
 <script type="text/javascript" src="/js/board/detail_view.js"></script>
 </head>
 <body>
+<tag:modal/>
 <div class="col-md-12 grid-margin">
 	<div class="card">
 		<div class="card-body">
-	  		<form id="board_frm" class="forms-sample" action="#" method="post" enctype="multipart/form-data">	  		
+	  		<form id="ifrm" class="forms-sample" action="#" method="post" enctype="multipart/form-data">	  		
 				<input type="hidden" name="board_no" value="${detail.board_no}"/>
 				<div class="form-group">
 	     			<label for="subject">Title</label>
@@ -22,35 +24,28 @@ pageEncoding="UTF-8"%>
 	       		<label for="writer">Writer</label>
 					<input type="text" class="form-control" id="writer" name="writer" value="${detail.reg_user_nm}" placeholder="input writer." disabled>
 	     		</div>
-	      	<div class="form-group">
+	      		<div class="form-group">
 	 				<label for="content">Content</label>
 	 				<input type="hidden" id="content" name="content" value="${detail.content}"> 
 	 				<tag:viewer/>
-	 				<!--
-	 				<textarea class="form-control" id="content" name="content" rows="3" disabled="disabled">${detail.content}</textarea>
-	 				-->
 				</div>
-	<!-- 
-	<div class="form-group">
-		<label for="attach_file">Attach File</label>
-	   <div class="input-group col-xs-12">
-	            	<input type="text" id="attach_file" name="attach_file" value="${files.fileOriName}" class="form-control file-upload-info" disabled placeholder="Upload Image">
-	             	<span class="input-group-append">
-	              	<button id="attachDownBtn" class="file-upload-browse btn btn-info" type="button">DownLoad</button>
-	             	</span>
-	   </div>
-	</div>
-	 -->
+				<div class="file-upload-form">
+        			<label for="title">Attach File</label>
+        			<button type="button" class="btn btn-warning" id="fileBtn" data-toggle="modal" data-target="#file-upload-modal">File Upload</button>
+        			<div class="file-upload-div" id="file-upload-div">
+        				<div class="file-upload-not">File not found</div>
+        			</div>
+           		</div>
 				<div class="form-group">
 					<label for="reg_date">Reg_date</label>
 					<input type="text" class="form-control" id="reg_date" name="reg_date" value="${detail.reg_date}" placeholder="input writer." disabled="disabled">
 				</div>
 	         
-	      	<div class="template-demo">
+	      		<div class="template-demo">
 					<button type="button" class="btn btn-danger" id="boardDelBtn">Delete</button>
 					<button type="button" class="btn btn-warning" onclick="movePage('/board/update/view/${detail.board_no}')">Update</button>
 					<button type="button" class="btn btn-success" onclick="movePage('/board/list/view')">Back</button>
-	      	</div>
+	      		</div>
 	   	</form>
 	  	</div>
 	</div>

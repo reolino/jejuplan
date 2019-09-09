@@ -1,13 +1,13 @@
 package com.jejuplan.board.domain;
 
-import com.jejuplan.common.domain.commonVO;
+import com.jejuplan.common.domain.CommonVO;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class BoardVO extends commonVO {
+public class BoardVO extends CommonVO {
 	private int board_no;
     private String menu_id;
     private String title;

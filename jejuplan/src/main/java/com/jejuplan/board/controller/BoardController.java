@@ -1,6 +1,7 @@
 package com.jejuplan.board.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -24,7 +25,6 @@ import com.jejuplan.Util.CryptUtil;
 import com.jejuplan.Util.FileUtil;
 import com.jejuplan.Util.GridUtil;
 import com.jejuplan.board.domain.BoardVO;
-import com.jejuplan.board.domain.FileVO;
 import com.jejuplan.board.service.BoardService;
 import com.jejuplan.main.service.MainService;
 import com.jejuplan.member.domain.MemberVO;
@@ -61,13 +61,14 @@ public class BoardController {
 	}
 
 	@RequestMapping("/insert/view")
-	private String boardInsertView(Model model) {
+	private String boardInsertView(Model model) throws Exception {
+		model.addAttribute("board_no", boardService.boardNo());
 		return "board/insert_view";
 	}
 	
 	@RequestMapping(value="/insert/proc", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> boardInsert(HttpServletRequest request ,@ModelAttribute BoardVO boardVO, Model model) throws Exception { 
+	public Map<String, Object> boardInsert(HttpServletRequest request ,@ModelAttribute BoardVO boardVO, @ModelAttribute List<MultipartFile> filelist, Model model) throws Exception { 
 		Map<String, Object> map = new HashMap<String, Object>();
 		HttpSession session = request.getSession();
 		boardVO.setReg_user_id(session.getAttribute("member_id").toString());
@@ -86,31 +87,6 @@ public class BoardController {
 		return map; 
 	}
 	
-	/*
-	 * @RequestMapping("/insert/proc") private String boardInsert(HttpServletRequest
-	 * request, @RequestPart MultipartFile files ,Model model) throws Exception{
-	 * BoardVO boardVO = new BoardVO(); FileVO fileVO = new FileVO();
-	 * 
-	 * HttpSession session = request.getSession();
-	 * 
-	 * boardVO.setTitle(request.getParameter("title"));
-	 * boardVO.setContent(request.getParameter("content"));
-	 * boardVO.setMenu_id(request.getParameter("menuid"));
-	 * boardVO.setReg_user_id(session.getAttribute("member_id").toString());
-	 * 
-	 * boardService.boardInsert(boardVO);
-	 * 
-	 * if(files.isEmpty()){ boardService.boardInsert(boardVO); } else{
-	 * boardService.boardInsert(boardVO); String desUploadFileDir =
-	 * uploadFileDir+request.getParameter("menuid")+"/";
-	 * 
-	 * fileVO = FileUtil.fileUpload(files,fileVO, desUploadFileDir);
-	 * //fileVO.setBno(boardVO.getBno()); boardService.fileInsert(fileVO); }
-	 * 
-	 * 
-	 * return ""; }
-	 */
-
 	@RequestMapping("/detail/view/{board_no}")
 	private String boardDetailView(@PathVariable int board_no, Model model) throws Exception {
 		model.addAttribute("detail", boardService.boardDetail(board_no));
@@ -165,19 +141,11 @@ public class BoardController {
 		return map; 
 	}
 
-	/*
-	@RequestMapping("/fileDown/proc/{bno}")
-	private void fileDown(@PathVariable int bno, HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		request.setCharacterEncoding("UTF-8");
-		FileVO fileVO = boardService.fileDetail(bno);
-		FileUtil.fileDownload(fileVO, request, response);
-	}
-	*/
 
 	@RequestMapping("/rest/view")
 	private String restView(Model model) throws Exception {
 		model.addAttribute("title", "Rest View");
 		return "board/rest_view";
 	}
+	
 }

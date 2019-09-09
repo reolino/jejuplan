@@ -1,4 +1,4 @@
-package com.jejuplan.common;
+package com.jejuplan.common.controller;
 
 import java.util.Date;
 

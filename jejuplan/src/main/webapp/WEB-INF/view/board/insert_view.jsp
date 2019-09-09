@@ -3,33 +3,29 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags"%>     
 <!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript" src="/js/board/insert_view.js"></script>
-</head>
 <body>
+<tag:modal/>
 <div class="col-md-12 grid-margin">
 	<div class="card">
-   	<div class="card-body">
-      	<form id="ifrm" class="forms-sample" action="#" method="post" enctype="multipart/form-data">
-        		<input type="hidden" id="menu_id" name="menu_id" value="000000006">
-          	<div class="form-group">
-            	<label for="title">Title</label>
+   		<div class="card-body">
+      		<form id="ifrm" class="forms-sample" action="#" method="post" enctype="multipart/form-data">
+        		<input type="hidden" id="menu_id" name="menu_id" value="">
+        		<input type="hidden" id="board_no" name="board_no" value="${board_no}">
+          		<div class="form-group">
+            		<label for="title">Title</label>
 					<input type="text" class="form-control" id="title" name="title" placeholder="input title.">
-           	</div>
-         	<div class="form-group">
-    				<label for="content">content</label>
+           		</div>
+         		<div class="form-group">
+    				<label for="content">Content</label>
     				<tag:editor/>
 				</div>
-        		<div class="form-group">
-            	<label>File upload</label>
-             	<input type="file" id="files" name="files" class="file-upload-default" onchange="changeValue(this)">
-             	<div class="input-group col-xs-12">
-               		<input id="fileNm" type="text" class="form-control file-upload-info" disabled placeholder="Upload File">
-               		<span class="input-group-append">
-                 		<button id="uploadBtn" class="file-upload-browse btn btn-info" type="button" >Upload</button>
-               		</span>
-             	</div>
-           	</div>
+        		<div class="file-upload-form">
+        			<label for="title">Attach File</label>
+        			<button type="button" class="btn btn-warning" id="fileBtn" data-toggle="modal" data-target="#file-upload-modal">File Upload</button>
+        			<div class="file-upload-div" id="file-upload-div">
+        				<div class="file-upload-not">File not found</div>
+        			</div>
+           		</div>
         		<div class="template-demo">
 					<button type="button" class="btn btn-success mr-2" id="submitBtn">Submit</button>
          		<button type="button" class="btn btn-danger" id="backBtn">Back</button>
@@ -38,5 +34,6 @@
    	</div>
 	</div>
 </div>
+<script type="text/javascript" src="/js/board/insert_view.js"></script>
 </body>
 </html>

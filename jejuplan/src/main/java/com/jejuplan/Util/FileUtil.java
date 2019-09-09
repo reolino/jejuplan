@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import com.jejuplan.board.domain.FileVO;
+import com.jejuplan.common.domain.FileVO;
 
 public class FileUtil {
 	
@@ -21,7 +21,7 @@ public class FileUtil {
         String fileName = files.getOriginalFilename(); 
         String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase(); 
         File destinationFile; 
-        String destinationFileName; 
+        String destinationFileName;
         
         do { 
             destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension; 
@@ -31,21 +31,23 @@ public class FileUtil {
         destinationFile.getParentFile().mkdirs(); 
         files.transferTo(destinationFile); 
         
-        fileVO.setFileName(destinationFileName);
-        fileVO.setFileOriName(fileName);
-        fileVO.setFileUrl(desUploadFileDir);
+        fileVO.setFile_nm(destinationFileName);
+        fileVO.setFile_origin_nm(fileName);
+        fileVO.setFile_url(desUploadFileDir);
+        fileVO.setFile_size(files.getSize());
+        fileVO.setFile_ext(fileNameExtension);
 
         return fileVO;
 	}
 	
 	public static void fileDownload(FileVO fileVO, HttpServletRequest request, HttpServletResponse response) {
 		try{
-            String fileUrl = fileVO.getFileUrl();
+            String fileUrl = fileVO.getFile_url();
             fileUrl += "/";
             String savePath = fileUrl;
-            String fileName = fileVO.getFileName();
+            String fileName = fileVO.getFile_nm();
             
-            String oriFileName = fileVO.getFileOriName();
+            String oriFileName = fileVO.getFile_origin_nm();
             InputStream in = null;
             OutputStream os = null;
             File file = null;
@@ -95,5 +97,23 @@ public class FileUtil {
         } catch (Exception e) {
             System.out.println("ERROR : " + e.getMessage());
         }
+	}
+	
+	public static FileVO fileDelete(FileVO fileVO) throws IOException {    	
+        String fileName = fileVO.getFile_url() + fileVO.getFile_nm(); 
+        
+        File file = new File(fileName);
+        
+        if( file.exists() ){
+            if(file.delete()){
+                System.out.println("file delete success");
+            }else{
+                System.out.println("file delete fail");
+            }
+        }else{
+            System.out.println("file not found");
+        }
+
+        return fileVO;
 	}
 }

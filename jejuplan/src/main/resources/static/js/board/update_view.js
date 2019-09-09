@@ -23,5 +23,7 @@ $(document).ready(function() {
 	});
 	
 	editor.setHtml($("#content").val());
+	
+	fileList();
 });
 

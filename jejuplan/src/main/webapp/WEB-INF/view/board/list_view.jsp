@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<tag:tui_grid_css/>
+	<tag:grid_css/>
 </head>
 <body>
 	<!-- search bar --> 
@@ -24,7 +24,7 @@
 		<button class="btn btn-primary" onclick="movePage('/board/insert/view')">write</button>
 	</div>
 	
-	<tag:tui_grid_js/>
+	<tag:grid_js/>
   	<script type="text/javascript" src="/js/board/list_view.js"></script>
 </body>
   

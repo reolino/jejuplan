@@ -1,14 +1,10 @@
 $(document).ready(function() {
-	$('#uploadBtn').click(function (e) {
-		e.preventDefault();
-		$('#files').click();
-	});
 	
+	$("#menu_id").val($("#p_menu_id").val());
+			
 	$('#backBtn').click(function (e) {
 		moveBack();
 	});
-	
-	
 	
 	$('#submitBtn').click(function (e) {
 		var params = $("#ifrm").serialize();
@@ -37,6 +33,3 @@ function moveBack(){
 	movePage('/board/list/view');
 }
 
-function changeValue(obj){
-	$('#fileNm').val(obj.value);
-}

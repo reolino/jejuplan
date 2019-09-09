@@ -36,4 +36,3 @@ function movePage(url){
 function initPage(){
 	calendarDestroy();
 }
-

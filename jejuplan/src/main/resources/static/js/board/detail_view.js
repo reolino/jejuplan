@@ -1,9 +1,5 @@
 
 $(document).ready(function() {	
-/*	$('#attachDownBtn').click(function(){ 
-		window.location.href = "/board/fileDown/proc/"+bno;
-	});*/
-	
 	
 	$('#boardDelBtn').click(function(){ 
 		boardDelete(); 
@@ -14,10 +10,12 @@ $(document).ready(function() {
 	});
 	
 	commentList();
+	
+	fileList();
 });
 
 function boardDelete(){
-	var params = $("#board_frm").serialize();
+	var params = $("#ifrm").serialize();
 	
 	$.ajax({
 		type:"post",
@@ -63,7 +61,6 @@ function commentList(){
             	str += '	</div>';
             	str += '</div>';
             });
-            
             
             $(".commentList").html(str);
         }

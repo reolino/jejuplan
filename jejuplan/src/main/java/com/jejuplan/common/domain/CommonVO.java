@@ -1,7 +1,8 @@
 package com.jejuplan.common.domain;
 
-public class commonVO {
+public class CommonVO {
 	private int page = 1;
+	private String userfile[];
 
 	public int getPage() {
 		return page;
@@ -17,4 +18,11 @@ public class commonVO {
 	public void setPage(int page) {
 		this.page = page;
 	}
+	public String[] getUserfile() {
+		return userfile;
+	}
+	public void setUserfile(String[] userfile) {
+		this.userfile = userfile;
+	}
+
 }
