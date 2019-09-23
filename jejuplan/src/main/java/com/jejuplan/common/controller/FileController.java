@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.jejuplan.Util.FileUtil;
 import com.jejuplan.common.domain.FileVO;
+import com.jejuplan.common.impl.FileImpl;
 import com.jejuplan.common.service.FileService;
 
 @Controller
@@ -45,7 +45,7 @@ public class FileController {
 			for(int i = 0;i<filelist.size();i++) {
 				MultipartFile file = filelist.get(i);
 				String desUploadFileDir = uploadFileDir+fileVO.getMenu_id()+"/";
-				fileVO = FileUtil.fileUpload(file,fileVO, desUploadFileDir); 
+				fileVO = FileImpl.fileUpload(file,fileVO, desUploadFileDir); 
 				fileService.fileInsert(fileVO);
 			}
 		}
@@ -67,7 +67,7 @@ public class FileController {
 	private void fileDown(@PathVariable int file_no, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		FileVO fileVO = fileService.fileDetail(file_no);
-		FileUtil.fileDownload(fileVO, request, response);
+		FileImpl.fileDownload(fileVO, request, response);
 	}
 	
 	@RequestMapping("/del/proc")
@@ -77,7 +77,7 @@ public class FileController {
 		int result = 0;
 		int file_no = fileVO.getFile_no();
 		fileVO = fileService.fileDetail(file_no);
-		FileUtil.fileDelete(fileVO);
+		FileImpl.fileDelete(fileVO);
 		result = fileService.fileDelete(fileVO);
 		
 		if(result > 0) {

@@ -4,7 +4,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import com.jejuplan.board.domain.BoardVO;
 import com.jejuplan.common.domain.FileVO;
 import com.jejuplan.common.mapper.FileMapper;
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.jejuplan.Util.CryptUtil;
+import com.jejuplan.common.impl.CryptImpl;
 import com.jejuplan.member.domain.MemberVO;
 import com.jejuplan.member.service.LoginService;
 
@@ -44,7 +44,7 @@ public class LoginController {
 		MemberVO resultVo  = LoginService.memberDetail(memberVo); 
 			
 		if(resultVo != null) {
-			String userPw =  CryptUtil.decrypt(resultVo.getMember_pw());
+			String userPw =  CryptImpl.decrypt(resultVo.getMember_pw());
 			String paramPw = memberVo.getMember_pw();
 			
 			if(paramPw.equals(userPw)) {
@@ -80,7 +80,7 @@ public class LoginController {
     		map.put("result", "false");
         	map.put("message", "ID exists");
 		}else {
-			String encryptPwd = CryptUtil.encrypt(memberVo.getMember_pw());
+			String encryptPwd = CryptImpl.encrypt(memberVo.getMember_pw());
 			memberVo.setMember_pw(encryptPwd);
 			LoginService.memberInsert(memberVo); 
 	        map.put("result", "true");

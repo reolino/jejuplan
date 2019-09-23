@@ -3,7 +3,6 @@ package com.jejuplan.common.mapper;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
-import com.jejuplan.board.domain.BoardVO;
 import com.jejuplan.common.domain.FileVO;
 
 @Repository("com.jejuplan.common.mapper.FileMapper")

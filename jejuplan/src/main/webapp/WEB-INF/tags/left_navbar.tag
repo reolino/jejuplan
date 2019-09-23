@@ -59,8 +59,8 @@ function  makeSubMenu(obj){
 	var p_menu_nm = obj.menu_nm;
 	var p_tree_menu = obj.tree_menu;
 	
-	objStr += ' 	<li class="nav-item">';
-	objStr += '			<a class="nav-link"  onclick="moveMenu(\''+p_menu_url+'\', \''+p_tree_menu+'\')">'+p_menu_nm+'</a>';
+	objStr += ' 	<li class="nav-item" style="cursor:pointer">';
+	objStr += '			<a class="nav-link"  onclick="moveMenu(\''+p_menu_url+'\', \''+p_tree_menu+'\')"> * '+p_menu_nm+'</a>';
 	objStr += '  	</li>';
 	
 	$("#ul_"+p_parent_menu_id).append(objStr);

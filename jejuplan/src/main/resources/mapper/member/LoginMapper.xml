@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.jejuplan.member.mapper.LoginMapper">
  
-	<select id="memberCheck" resultType="int" parameterType="com.jejuplan.board.domain.BoardVO">
+	<select id="memberCheck" resultType="int" parameterType="com.jejuplan.member.domain.MemberVO">
         SELECT COUNT(*)
          FROM TB_MEMBER
         WHERE MEMBER_ID = #{member_id}
