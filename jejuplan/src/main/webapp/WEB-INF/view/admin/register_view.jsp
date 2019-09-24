@@ -9,7 +9,7 @@
 <title>register</title>
 <tag:header/>
 <tag:boot_css/>
-<script type="text/javascript" src="/js/member/register_view.js"></script>
+<script type="text/javascript" src="/js/admin/register_view.js"></script>
 </head>
 <body>
 	<div class="container-scroller">

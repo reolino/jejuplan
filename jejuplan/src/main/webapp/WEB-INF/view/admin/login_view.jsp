@@ -9,7 +9,7 @@
 <title>login</title>
 <tag:header/>
 <tag:boot_css/>
-<script type="text/javascript" src="/js/login_view.js"></script>
+<script type="text/javascript" src="/js/admin/login_view.js"></script>
 </head>
 <body>
 	<div class="container-scroller">

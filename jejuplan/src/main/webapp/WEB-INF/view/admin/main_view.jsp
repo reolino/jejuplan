@@ -11,7 +11,7 @@
 	   	<title>Jeju Plan</title>
 	   	<tag:header/>
 	   	<tag:boot_css/>
-	   	<script type="text/javascript" src="/js/main_view.js"></script>
+	   	<script type="text/javascript" src="/js/admin/main_view.js"></script>
   	</head>
 	<body>
 		<input type="hidden" id="p_menu_url" value="${first_menu.menu_url}"/>
