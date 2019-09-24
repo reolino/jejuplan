@@ -1,4 +1,4 @@
-package com.jejuplan.member.domain;
+package com.jejuplan.admin.domain;
 
 import java.sql.Date;
 import lombok.Getter;

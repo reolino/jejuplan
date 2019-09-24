@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jejuplan.sample.domain.BoardVO;
 import com.jejuplan.sample.service.BoardService;
-import com.jejuplan.main.service.MainService;
+import com.jejuplan.admin.service.MainService;
 
 @Controller
 @RequestMapping("/sample/board")
@@ -28,7 +28,7 @@ public class BoardController {
 	@Resource(name = "com.jejuplan.sample.service.BoardService")
 	BoardService boardService;
 
-	@Resource(name="com.jejuplan.main.service.MainService")
+	@Resource(name="com.jejuplan.admin.service.MainService")
     MainService mainService;
 	
 	@Value("${file.upload.directory}")

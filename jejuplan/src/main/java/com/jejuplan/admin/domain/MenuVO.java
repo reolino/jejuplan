@@ -1,4 +1,4 @@
-package com.jejuplan.main.domain;
+package com.jejuplan.admin.domain;
 
 import java.sql.Date;
 

@@ -1,4 +1,4 @@
-package com.jejuplan.member.controller;
+package com.jejuplan.admin.controller;
 
 import java.util.HashMap;
 
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jejuplan.common.impl.CryptImpl;
-import com.jejuplan.member.domain.MemberVO;
-import com.jejuplan.member.service.LoginService;
+import com.jejuplan.admin.domain.MemberVO;
+import com.jejuplan.admin.service.LoginService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @SessionAttributes({"member_id", "member_auth", "member_auth_nm"})
 public class LoginController {
-	@Resource(name="com.jejuplan.member.service.LoginService")
+	@Resource(name="com.jejuplan.admin.service.LoginService")
     LoginService LoginService;
 	
 	@RequestMapping("/")
@@ -35,7 +35,7 @@ public class LoginController {
 	
 	@RequestMapping("/login/view")
     private String login_view(Model model) throws Exception{
-        return "login_view"; 
+        return "admin/login_view"; 
     }
 	
 	@RequestMapping(value="/member/login/proc", method=RequestMethod.POST)
@@ -61,30 +61,6 @@ public class LoginController {
 		}else {
 	        map.put("result", "false");
 	        map.put("message", "User does not exist");
-		}
-		
-		return map; 
-	}
-	
-	@RequestMapping("/member/register/view")
-    private String register_view(Model model) throws Exception{
-        return "/member/register_view"; 
-    }
-	
-	@RequestMapping(value="/member/register/proc", method=RequestMethod.POST)
-	public @ResponseBody Map<String, Object> registerProc(@ModelAttribute MemberVO memberVo) throws Exception { 
-		Map<String, Object> map = new HashMap<String, Object>();
-		int checkCnt = LoginService.memberCheck(memberVo); 
-		
-		if(checkCnt> 0) {
-    		map.put("result", "false");
-        	map.put("message", "ID exists");
-		}else {
-			String encryptPwd = CryptImpl.encrypt(memberVo.getMember_pw());
-			memberVo.setMember_pw(encryptPwd);
-			LoginService.memberInsert(memberVo); 
-	        map.put("result", "true");
-	        map.put("message", "Regist Ok!");
 		}
 		
 		return map; 

@@ -1,14 +1,14 @@
-package com.jejuplan.main.service;
+package com.jejuplan.admin.service;
 
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
-import com.jejuplan.main.domain.MenuVO;
-import com.jejuplan.main.mapper.MainMapper;
+import com.jejuplan.admin.domain.MenuVO;
+import com.jejuplan.admin.mapper.MainMapper;
 
-@Service("com.jejuplan.main.service.MainService")
+@Service("com.jejuplan.admin.service.MainService")
 public class MainService {
-	@Resource(name="com.jejuplan.main.mapper.MainMapper")
+	@Resource(name="com.jejuplan.admin.mapper.MainMapper")
     MainMapper mainMapper;
     
 	public List<MenuVO> mainMenuList() throws Exception{

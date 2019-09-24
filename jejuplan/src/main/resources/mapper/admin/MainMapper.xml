@@ -3,8 +3,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.jejuplan.main.mapper.MainMapper">
-	<select id="mainMenuList" resultType="com.jejuplan.main.domain.MenuVO">
+<mapper namespace="com.jejuplan.admin.mapper.MainMapper">
+	<select id="mainMenuList" resultType="com.jejuplan.admin.domain.MenuVO">
     SELECT MENU_ID, MENU_NM, MENU_URL, MENU_LV, PARENT_MENU_ID,TREE_MENU
     		  ,(SELECT COUNT(B.MENU_LV) FROM TB_MENU B WHERE A.MENU_ID = B.PARENT_MENU_ID AND B.USE_YN ='Y') AS LV_CNT
 	 	FROM TB_MENU A
@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	ORDER BY TREE_ORDER ASC
    </select>
    
-   <select id="subMenuList" resultType="com.jejuplan.main.domain.MenuVO">
+   <select id="subMenuList" resultType="com.jejuplan.admin.domain.MenuVO">
     SELECT MENU_ID, MENU_NM, MENU_URL, MENU_LV, PARENT_MENU_ID,TREE_MENU
 	 	FROM TB_MENU
 	 	WHERE USE_YN = 'Y'
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	ORDER BY TREE_ORDER ASC
    </select>
     
-   <select id="firstMenuDetail" resultType="com.jejuplan.main.domain.MenuVO">
+   <select id="firstMenuDetail" resultType="com.jejuplan.admin.domain.MenuVO">
    	SELECT *
 	  	FROM TB_MENU
 		WHERE USE_YN = 'Y'

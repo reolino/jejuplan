@@ -1,10 +1,10 @@
-package com.jejuplan.main.mapper;
+package com.jejuplan.admin.mapper;
 
 import java.util.List;
 import org.springframework.stereotype.Repository;
-import com.jejuplan.main.domain.MenuVO;
+import com.jejuplan.admin.domain.MenuVO;
 
-@Repository("com.jejuplan.main.mapper.MainMapper")
+@Repository("com.jejuplan.admin.mapper.MainMapper")
 public interface MainMapper {
 	public List<MenuVO> mainMenuList() throws Exception;
 	
