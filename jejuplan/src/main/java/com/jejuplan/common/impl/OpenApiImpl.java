@@ -15,7 +15,6 @@ public class OpenApiImpl {
 		JSONObject xmlJSONObj = null;
 		
         try{
-        	//requestUrl = requestUrl + "&pageSize=140";
             URL url = new URL(requestUrl);
             HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
             urlconnection.setRequestMethod("GET");

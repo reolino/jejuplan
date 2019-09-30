@@ -3,8 +3,11 @@ package com.jejuplan.common.domain;
 public class CommonVO {
 	private int page = 1;
 	private String userfile[];
-	private String key;
+	
+	private String api;
 	private String url;
+	private String key;
+	private String param;
 
 	public int getPage() {
 		return page;
@@ -40,7 +43,24 @@ public class CommonVO {
 	public String getUrl() {
 		return url;
 	}
+	
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	public String getApi() {
+		return api;
+	}
+	
+	public void setApi(String api) {
+		this.api = api;
+	}
+	
+	public String getParam() {
+		return param;
+	}
+	
+	public void setParam(String param) {
+		this.param = param;
 	}
 }

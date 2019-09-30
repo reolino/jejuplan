@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.jejuplan.admin.mapper.GoodShopMapper">
+  	
+   <insert id="goodShopInsert" parameterType="com.jejuplan.admin.domain.GoodShopVO">
+   	INSERT INTO TB_GOODSHOP (DATA_AREA, DATA_SID, DATA_CONTENT, FILE_CNT, HVOF_STTUS, TEL_NO
+   	, POSX, POSY, INDUTY, APPN_PRDLST_PC, DATA_TITLE, ADRES, BSN_TIME, REG_DATE)
+   	VALUES (#{data_area}, #{data_sid}, #{data_content}, #{file_cnt}, #{hvof_sttus}, #{tel_no}
+   	, #{posx}, #{posy}, #{induty}, #{appn_prdlst_pc}, #{data_title}, #{adres}, #{bsn_time}, #{reg_date}
+   	)
+	ON DUPLICATE KEY 
+	UPDATE DATA_AREA = #{data_area}
+	, DATA_CONTENT = #{data_content}
+	, FILE_CNT = #{file_cnt}
+	, HVOF_STTUS = #{hvof_sttus}
+	, TEL_NO = #{tel_no}
+	, POSX = #{posx}
+   	, POSY = #{posy}
+   	, INDUTY = #{induty}
+   	, APPN_PRDLST_PC = #{appn_prdlst_pc}
+   	, DATA_TITLE = #{data_title}
+   	, ADRES = #{adres}
+   	, BSN_TIME = #{bsn_time}
+   	, REG_DATE = #{reg_date}
+   </insert>
+    
+    
+</mapper>
+
+
