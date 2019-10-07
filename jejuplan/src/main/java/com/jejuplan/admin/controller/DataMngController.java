@@ -18,6 +18,12 @@ import com.jejuplan.admin.service.GoodShopService;
 import com.jejuplan.common.domain.CommonVO;
 import com.jejuplan.common.impl.OpenApiImpl;
 
+/***
+ [note] 
+  		 Controller for data management.
+		 1. Menu to call public data
+		 2. Menus related to the batch scheduler
+***/
 @Controller
 public class DataMngController {
 	@Resource(name="com.jejuplan.admin.service.DataMngService")
@@ -25,12 +31,20 @@ public class DataMngController {
 	
 	@Resource(name="com.jejuplan.admin.service.GoodShopService")
 	GoodShopService goodShopService;
-	
+		
+	/***
+	  [name]    /data_mng/open_api/view
+	  [deatail] Call the open data page.
+	***/
 	@RequestMapping("/data_mng/open_api/view")
     private String open_api_view(Model model) throws Exception{
         return "/admin/data_mng/open_api_view"; 
     }
 	
+	/***
+	  [name]      /data_mng/open_api/proc
+	  [deatail]   Execute open data call with ajax.
+	***/
 	@RequestMapping(value="/data_mng/open_api/proc", method=RequestMethod.POST)
 	public @ResponseBody Map<String, Object> open_api_proc(@ModelAttribute CommonVO commonVO, Model model) throws Exception { 
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -53,6 +67,10 @@ public class DataMngController {
 		return map; 
 	}
 	
+	/***
+	  [class] : openApiProcess
+	  [deatail] : Store open data in DB.
+	***/
 	private int openApiProcess(String api,JSONObject jsonObj) throws Exception{
 		int res = 0;
 		
